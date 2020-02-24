@@ -24,6 +24,7 @@ defmodule KatotoWeb do
       import Plug.Conn
       import KatotoWeb.Gettext
       alias KatotoWeb.Router.Helpers, as: Routes
+      import Phoenix.LiveView.Controller
     end
   end
 
@@ -42,6 +43,7 @@ defmodule KatotoWeb do
       import KatotoWeb.ErrorHelpers
       import KatotoWeb.Gettext
       alias KatotoWeb.Router.Helpers, as: Routes
+      import Phoenix.LiveView.Helpers
     end
   end
 
@@ -50,6 +52,7 @@ defmodule KatotoWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 

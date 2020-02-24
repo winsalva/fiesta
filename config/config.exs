@@ -16,7 +16,7 @@ config :katoto, KatotoWeb.Endpoint,
   secret_key_base: "+HABISq4c08qqnlajk+r06mqmaGyNXahfsjKuLWkCOwr7hKQWiQOiUUVNoyB/PaU",
   render_errors: [view: KatotoWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Katoto.PubSub, adapter: Phoenix.PubSub.PG2],
-  live_view: [signing_salt: "IYr/4opo"]
+  live_view: [signing_salt: "bsouhlAvbufXCfE4oBf0i8dgj4IOjHrv"]
 
 # Configures Elixir's Logger
 config :logger, :console,
