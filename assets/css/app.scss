@@ -2,3 +2,7 @@ $fa-font-path: '~font-awesome/fonts';
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~font-awesome/scss/font-awesome.scss';
 @import "../../deps/phoenix_live_view/assets/css/live_view.css";
+
+.create-lobby-form {
+  margin-top: 15%;
+}

@@ -1,0 +1,15 @@
+<section class="create-lobby-form">
+  <%= form_for @changeset, "#", [phx_change: :validate, phx_submit: :save], fn f -> %>
+
+    <div class="container">
+      <div class="input-group input-group-lg">
+          <%= text_input f, :name, class: "form-control" %>
+        <div class="input-group-append">
+          <%= submit "Create Lobby", class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+      <%= error_tag f, :name %>
+    </div>
+
+  <% end %>
+</div>

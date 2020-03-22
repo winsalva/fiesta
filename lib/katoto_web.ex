@@ -63,6 +63,13 @@ defmodule KatotoWeb do
     end
   end
 
+  def live do
+    quote do
+      use Phoenix.LiveView
+      alias KatotoWeb.Router.Helpers, as: Routes
+    end
+  end
+
   @doc """
   When used, dispatch to the appropriate controller/view/etc.
   """

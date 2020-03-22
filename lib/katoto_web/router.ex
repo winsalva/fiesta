@@ -16,7 +16,8 @@ defmodule KatotoWeb.Router do
   scope "/", KatotoWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", LobbyLive
+    live "/chat/:id", ChatLive
   end
 
   # Other scopes may use custom stacks.
