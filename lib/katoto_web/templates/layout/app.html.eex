@@ -8,25 +8,28 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <%= csrf_meta_tag() %>
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen bg-gray-200">
     <header>
-      <section class="container">
-      </section>
-    </header>
-    <main role="main" class="container-fluid">
-      <p class="alert alert-info d-none" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger d-none" role="alert"><%= get_flash(@conn, :error) %></p>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 py-3">
+      <section class="bg-white py-2">
+        <div class="flex pl-4 px-4 items-center">
+          <div class="w-4/5">
             <h1 class="float-left">Katoto</h1>
+          </div>
+          <div class="w-1/5">
             <a class="float-right px-3" href="#">Log In</a>
             <a class="float-right px-3" href="#">About Us</a>
           </div>
         </div>
-      </div>
-      <%= render @view_module, @view_template, assigns %>
+      </section>
+    </header>
+    <main role="main" class="flex flex-grow">
+      <p class="alert alert-info d-none" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger d-none" role="alert"><%= get_flash(@conn, :error) %></p>
+        <%= render @view_module, @view_template, assigns %>
     </main>
+    <footer class="text-center">
+      Katoto Chat Web Application &copy; 2020
+    </footer>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
