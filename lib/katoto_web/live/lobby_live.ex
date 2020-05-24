@@ -1,5 +1,6 @@
 defmodule KatotoWeb.LobbyLive do
-  use KatotoWeb, :live
+  use Phoenix.LiveView, container: {:div, class: "flex-grow"}
+  alias KatotoWeb.Router.Helpers, as: Routes
 
   alias Katoto.Chat
   alias Katoto.Chat.Lobby

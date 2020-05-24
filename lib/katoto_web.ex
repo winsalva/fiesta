@@ -44,6 +44,7 @@ defmodule KatotoWeb do
       import KatotoWeb.Gettext
       alias KatotoWeb.Router.Helpers, as: Routes
       import Phoenix.LiveView.Helpers
+      import KatotoWeb.Helpers.HTML
     end
   end
 

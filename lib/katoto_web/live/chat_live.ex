@@ -1,5 +1,5 @@
 defmodule KatotoWeb.ChatLive do
-  use Phoenix.LiveView, container: {:div, class: "w-full"}
+  use Phoenix.LiveView, container: {:div, class: "flex flex-grow"}
 
   alias KatotoWeb.ChatView
 
