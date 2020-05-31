@@ -6,14 +6,19 @@ defmodule Katoto.Chat.Lobby do
 
   schema "lobbies" do
     field :name, :string
+    field :description, :string
+    field :status, LobbyStatus
 
     timestamps()
   end
 
+  @required [:name]
+  @fields @required ++ [:status, :description]
+
   @doc false
   def changeset(lobby, attrs \\ %{}) do
     lobby
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, @fields)
+    |> validate_required(@required)
   end
 end

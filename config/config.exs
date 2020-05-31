@@ -15,7 +15,7 @@ config :katoto, KatotoWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "+HABISq4c08qqnlajk+r06mqmaGyNXahfsjKuLWkCOwr7hKQWiQOiUUVNoyB/PaU",
   render_errors: [view: KatotoWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Katoto.PubSub, adapter: Phoenix.PubSub.PG2],
+  pubsub_server: Katoto.PubSub,
   live_view: [signing_salt: "bsouhlAvbufXCfE4oBf0i8dgj4IOjHrv"]
 
 # Configures Elixir's Logger

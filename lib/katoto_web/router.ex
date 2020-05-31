@@ -4,9 +4,10 @@ defmodule KatotoWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug Phoenix.LiveView.Flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :put_root_layout, {KatotoWeb.LayoutView, "app.html"}
   end
 
   pipeline :api do

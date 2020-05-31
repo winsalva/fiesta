@@ -32,6 +32,7 @@ defmodule KatotoWeb do
     quote do
       use Phoenix.View,
         root: "lib/katoto_web/templates",
+        pattern: "**/*",
         namespace: KatotoWeb
 
       # Import convenience functions from controllers

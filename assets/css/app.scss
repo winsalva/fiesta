@@ -1,53 +1,11 @@
-$fa-font-path: '~font-awesome/fonts';
-@import '~bootstrap/scss/bootstrap.scss';
-@import '~font-awesome/scss/font-awesome.scss';
-@import "../../deps/phoenix_live_view/assets/css/live_view.css";
-@tailwind base;
-@tailwind components;
+@import "tailwindcss/base";
 
-.btn {
-  @apply font-bold py-2 px-4 rounded;
-}
+@import "tailwindcss/components";
 
-.btn-blue {
-  @apply bg-blue-500 text-white;
-}
-.btn-blue:hover {
-  @apply bg-blue-700 text-white;
-}
+@import "./components/_custom.scss";
+@import "./components/_buttons.scss";
+@import "./components/_cards.scss";
 
-.btn-gray {
-  @apply bg-gray-400 text-gray-800;
-}
-.btn-gray:hover {
-  @apply bg-gray-500;
-}
+@import "tailwindcss/utilities";
 
-.card {
-  @apply flex flex-col items-center p-8 bg-white shadow-lg rounded mb-8 flex-1;
-}
-
-@tailwind utilities;
-
-h1 {
-  font-weight: 700;
-  font-size: 3rem;
-}
-
-h2 {
-  font-weight: 700;
-  font-size: 2.5rem;
-}
-
-h3 {
-  font-weight: 700;
-  font-size: 2.0rem;
-}
-
-.icon {
-  fill: white;
-}
-
-.logo {
-  fill: black;
-}
+@import "./custom/_utilities.scss";

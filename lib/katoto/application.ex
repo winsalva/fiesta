@@ -11,9 +11,10 @@ defmodule Katoto.Application do
       # Start the Ecto repository
       Katoto.Repo,
       # Start the endpoint when the application starts
-      KatotoWeb.Endpoint
+      KatotoWeb.Endpoint,
       # Starts a worker by calling: Katoto.Worker.start_link(arg)
       # {Katoto.Worker, arg},
+      {Phoenix.PubSub, [name: Katoto.PubSub, adapter: Phoenix.PubSub.PG2]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
