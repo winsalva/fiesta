@@ -7,7 +7,7 @@ defmodule KatotoWeb.Router do
     plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug :put_root_layout, {KatotoWeb.LayoutView, "app.html"}
+    plug :put_layout, {KatotoWeb.LayoutView, "app.html"}
   end
 
   pipeline :api do
@@ -17,8 +17,9 @@ defmodule KatotoWeb.Router do
   scope "/", KatotoWeb do
     pipe_through :browser
 
-    live "/", LobbyLive
-    live "/chat/:id", ChatLive
+    resources "/", PageController, only: [:index]
+    resources "/lobby", LobbyController, only: [:index]
+    live "/chat/:id", ChatLive, layout: {KatotoWeb.LayoutView, "app.html"}
   end
 
   # Other scopes may use custom stacks.

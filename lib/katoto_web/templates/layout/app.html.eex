@@ -21,7 +21,7 @@
 
     <div class="flex-col md:flex md:flex-row-reverse flex-wrap">
 
-      <div class="sm:w-full sm:flex-grow md:flex-grow-0 md:w-19/20 bg-gray-100">
+      <div class="sm:w-full sm:flex-grow md:flex-grow-0 md:w-19/20 bg-gray-100 mb-12 md:mb-0">
         <main role="main">
           <p class="alert alert-info d-none" role="alert"><%= get_flash(@conn, :info) %></p>
           <p class="alert alert-danger d-none" role="alert"><%= get_flash(@conn, :error) %></p>

@@ -1,4 +1,4 @@
-<div class="w-full my-auto md:flex md:flex-col md:justify-between md:w-1/20 bg-gray-900 text-center fixed bottom-0 md:pt-2 md:top-0 md:left-0 h-10 md:h-screen md:border-r-1 md:border-gray-600">
+<div class="w-full my-auto md:flex md:flex-col md:justify-between md:w-1/20 bg-black text-center fixed bottom-0 md:pt-2 md:top-0 md:left-0 h-10 md:h-screen md:border-r-1 md:border-gray-600">
   <div class="md:relative mx-auto">
     <ul class="list-reset flex md:flex-col text-center md:text-left py-1 md:py-0">
       <li class="my-auto py-1 px-1 md:flex-1 bg-white rounded-sm h-10 w-10 md:h-8 md:w-8 lg:h-10 lg:w-10 xl:h-12 xl:w-12 font-bold text-3xl mx-auto mb-5 lg:block hidden md:block">
