@@ -1,7 +1,7 @@
-defmodule KatotoWeb.Modal.NewLobbyComponent do
+defmodule KusinaWeb.Modal.NewLobbyComponent do
   use Phoenix.LiveComponent
 
-  alias KatotoWeb.LobbyView
+  alias KusinaWeb.LobbyView
 
   def render(assigns) do
     LobbyView.render("modal/new_lobby.html", assigns)

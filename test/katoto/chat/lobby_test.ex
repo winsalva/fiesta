@@ -1,7 +1,7 @@
-defmodule Katoto.Chat.LobbyTest do
-  use Katoto.DataCase
+defmodule Kusina.Chat.LobbyTest do
+  use Kusina.DataCase
 
-  alias Katoto.Chat.Lobby
+  alias Kusina.Chat.Lobby
 
   describe "changeset" do
     test "returns valid if params are valid" do

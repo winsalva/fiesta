@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :katoto,
-  ecto_repos: [Katoto.Repo]
+config :kusina,
+  ecto_repos: [Kusina.Repo]
 
 # Configures the endpoint
-config :katoto, KatotoWeb.Endpoint,
+config :kusina, KusinaWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "+HABISq4c08qqnlajk+r06mqmaGyNXahfsjKuLWkCOwr7hKQWiQOiUUVNoyB/PaU",
-  render_errors: [view: KatotoWeb.ErrorView, accepts: ~w(html json)],
-  pubsub_server: Katoto.PubSub,
+  render_errors: [view: KusinaWeb.ErrorView, accepts: ~w(html json)],
+  pubsub_server: Kusina.PubSub,
   live_view: [signing_salt: "bsouhlAvbufXCfE4oBf0i8dgj4IOjHrv"]
 
 # Configures Elixir's Logger

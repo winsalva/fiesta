@@ -1,11 +1,11 @@
-defmodule KatotoWeb.LobbyLive do
+defmodule KusinaWeb.LobbyLive do
   use Phoenix.LiveView, container: {:div, class: "flex-grow"}
-  alias KatotoWeb.Router.Helpers, as: Routes
+  alias KusinaWeb.Router.Helpers, as: Routes
 
-  alias Katoto.Chat
-  alias Katoto.Chat.Lobby
-  alias KatotoWeb.ChatLive
-  alias KatotoWeb.LobbyView
+  alias Kusina.Chat
+  alias Kusina.Chat.Lobby
+  alias KusinaWeb.ChatLive
+  alias KusinaWeb.LobbyView
 
   def render(assigns) do
     LobbyView.render("index.html", assigns)

@@ -1,4 +1,4 @@
-defmodule KatotoWeb.ErrorHelpers do
+defmodule KusinaWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -39,9 +39,9 @@ defmodule KatotoWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(KatotoWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(KusinaWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(KatotoWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(KusinaWeb.Gettext, "errors", msg, opts)
     end
   end
 end

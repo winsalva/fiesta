@@ -1,4 +1,4 @@
-defmodule Katoto.Chat.Lobby do
+defmodule Kusina.Chat.Lobby do
   use Ecto.Schema
   import Ecto.Changeset
 

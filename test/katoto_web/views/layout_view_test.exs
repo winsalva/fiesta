@@ -1,5 +1,5 @@
-defmodule KatotoWeb.LayoutViewTest do
-  use KatotoWeb.ConnCase, async: true
+defmodule KusinaWeb.LayoutViewTest do
+  use KusinaWeb.ConnCase, async: true
 
   # When testing helpers, you may want to import Phoenix.HTML and
   # use functions such as safe_to_string() to convert the helper

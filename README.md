@@ -1,4 +1,4 @@
-# Katoto
+# Kusina
 
 To start your Phoenix server:
 

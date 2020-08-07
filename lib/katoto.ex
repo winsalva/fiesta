@@ -1,6 +1,6 @@
-defmodule Katoto do
+defmodule Kusina do
   @moduledoc """
-  Katoto keeps the contexts that define your domain
+  Kusina keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

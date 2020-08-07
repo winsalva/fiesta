@@ -1,11 +1,11 @@
-defmodule KatotoWeb.Helpers.HTML do
+defmodule KusinaWeb.Helpers.HTML do
   @moduledoc """
   Generates customized html tags
   """
 
   use Phoenix.HTML
 
-  alias KatotoWeb.Router.Helpers, as: Routes
+  alias KusinaWeb.Router.Helpers, as: Routes
 
   def icon_tag(conn, name, opts \\ []) do
     classes = Keyword.get(opts, :class, "") <> " icon"

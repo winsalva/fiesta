@@ -1,16 +1,16 @@
-defmodule KatotoWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :katoto
+defmodule KusinaWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :kusina
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_katoto_key",
+    key: "_kusina_key",
     signing_salt: "N2u1TsKZ"
   ]
 
-  socket "/socket", KatotoWeb.UserSocket,
+  socket "/socket", KusinaWeb.UserSocket,
     websocket: true,
     longpoll: false
 
@@ -22,7 +22,7 @@ defmodule KatotoWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :katoto,
+    from: :kusina,
     gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
@@ -45,5 +45,5 @@ defmodule KatotoWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug KatotoWeb.Router
+  plug KusinaWeb.Router
 end

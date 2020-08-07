@@ -1,3 +1,3 @@
-defmodule KatotoWeb.PageView do
-  use KatotoWeb, :view
+defmodule KusinaWeb.PageView do
+  use KusinaWeb, :view
 end

@@ -1,3 +1,3 @@
-defmodule KatotoWeb.ChatView do
-  use KatotoWeb, :view
+defmodule KusinaWeb.ChatView do
+  use KusinaWeb, :view
 end

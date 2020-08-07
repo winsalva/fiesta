@@ -1,7 +1,7 @@
-defmodule KatotoWeb.LobbyController do
-  use KatotoWeb, :controller
+defmodule KusinaWeb.LobbyController do
+  use KusinaWeb, :controller
 
-  alias KatotoWeb.LobbyLive
+  alias KusinaWeb.LobbyLive
 
   def index(conn, _params) do
     live_render(conn, LobbyLive)

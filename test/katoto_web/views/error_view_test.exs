@@ -1,14 +1,14 @@
-defmodule KatotoWeb.ErrorViewTest do
-  use KatotoWeb.ConnCase, async: true
+defmodule KusinaWeb.ErrorViewTest do
+  use KusinaWeb.ConnCase, async: true
 
   # Bring render/3 and render_to_string/3 for testing custom views
   import Phoenix.View
 
   test "renders 404.html" do
-    assert render_to_string(KatotoWeb.ErrorView, "404.html", []) == "Not Found"
+    assert render_to_string(KusinaWeb.ErrorView, "404.html", []) == "Not Found"
   end
 
   test "renders 500.html" do
-    assert render_to_string(KatotoWeb.ErrorView, "500.html", []) == "Internal Server Error"
+    assert render_to_string(KusinaWeb.ErrorView, "500.html", []) == "Internal Server Error"
   end
 end

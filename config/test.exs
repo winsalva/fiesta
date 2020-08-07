@@ -1,16 +1,16 @@
 use Mix.Config
 
 # Configure your database
-config :katoto, Katoto.Repo,
+config :kusina, Kusina.Repo,
   username: "postgres",
   password: "postgres",
-  database: "katoto_test",
+  database: "kusina_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :katoto, KatotoWeb.Endpoint,
+config :kusina, KusinaWeb.Endpoint,
   http: [port: 4002],
   server: false
 

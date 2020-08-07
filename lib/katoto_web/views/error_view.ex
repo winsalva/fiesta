@@ -1,5 +1,5 @@
-defmodule KatotoWeb.ErrorView do
-  use KatotoWeb, :view
+defmodule KusinaWeb.ErrorView do
+  use KusinaWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

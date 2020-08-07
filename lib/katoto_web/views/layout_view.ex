@@ -1,3 +1,3 @@
-defmodule KatotoWeb.LayoutView do
-  use KatotoWeb, :view
+defmodule KusinaWeb.LayoutView do
+  use KusinaWeb, :view
 end

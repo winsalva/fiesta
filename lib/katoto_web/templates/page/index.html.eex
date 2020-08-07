@@ -1,10 +1,10 @@
 <div class="flex flex-col">
   <div class="flex w-full flex-col-reverse md:flex-row">
     <div class="w-full md:w-3/5 px-6 lg:px-12 flex flex-col justify-center">
-      <div class="text-3xl lg:text-5xl font-bold">Welcome to Katoto</div>
+      <div class="text-3xl lg:text-5xl font-bold">Welcome to Kusina</div>
       <p class="text-lg leading-relaxed py-3 lg:py-5 text-justify">
-      Who are we, you might ask. Katoto is a Filipino word that means pal or close friend. So we are your close friend
-      when it comes to your food business. Katoto provides a quick-to-setup and sleek ordering system for the food you sell.
+      Who are we, you might ask. Kusina is a Filipino word that means pal or close friend. So we are your close friend
+      when it comes to your food business. Kusina provides a quick-to-setup and sleek ordering system for the food you sell.
       </p>
       <p class="text-lg leading-relaxed py-3 lg:py-5 text-justify">
       If you want to setup your kitchen now then click on the link below.

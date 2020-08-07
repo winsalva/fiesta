@@ -1,7 +1,7 @@
-defmodule KatotoWeb.ChatLive do
+defmodule KusinaWeb.ChatLive do
   use Phoenix.LiveView, container: {:div, class: "flex flex-grow"}
 
-  alias KatotoWeb.ChatView
+  alias KusinaWeb.ChatView
 
   def render(assigns) do
     ChatView.render("index.html", assigns)

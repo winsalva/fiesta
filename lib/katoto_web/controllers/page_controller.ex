@@ -1,5 +1,5 @@
-defmodule KatotoWeb.PageController do
-  use KatotoWeb, :controller
+defmodule KusinaWeb.PageController do
+  use KusinaWeb, :controller
 
   def index(conn, _params) do
     render(conn, "index.html")

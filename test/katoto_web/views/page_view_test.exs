@@ -1,3 +1,3 @@
-defmodule KatotoWeb.PageViewTest do
-  use KatotoWeb.ConnCase, async: true
+defmodule KusinaWeb.PageViewTest do
+  use KusinaWeb.ConnCase, async: true
 end

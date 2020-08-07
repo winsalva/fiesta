@@ -1,4 +1,4 @@
-defmodule KatotoWeb.ConnCase do
+defmodule KusinaWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule KatotoWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use KatotoWeb.ConnCase, async: true`, although
+  by setting `use KusinaWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -21,18 +21,18 @@ defmodule KatotoWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      alias KatotoWeb.Router.Helpers, as: Routes
+      alias KusinaWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint KatotoWeb.Endpoint
+      @endpoint KusinaWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Katoto.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Kusina.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Katoto.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Kusina.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

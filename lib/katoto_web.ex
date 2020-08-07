@@ -1,12 +1,12 @@
-defmodule KatotoWeb do
+defmodule KusinaWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use KatotoWeb, :controller
-      use KatotoWeb, :view
+      use KusinaWeb, :controller
+      use KusinaWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,11 +19,11 @@ defmodule KatotoWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: KatotoWeb
+      use Phoenix.Controller, namespace: KusinaWeb
 
       import Plug.Conn
-      import KatotoWeb.Gettext
-      alias KatotoWeb.Router.Helpers, as: Routes
+      import KusinaWeb.Gettext
+      alias KusinaWeb.Router.Helpers, as: Routes
       import Phoenix.LiveView.Controller
     end
   end
@@ -31,9 +31,9 @@ defmodule KatotoWeb do
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/katoto_web/templates",
+        root: "lib/kusina_web/templates",
         pattern: "**/*",
-        namespace: KatotoWeb
+        namespace: KusinaWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
@@ -41,11 +41,11 @@ defmodule KatotoWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import KatotoWeb.ErrorHelpers
-      import KatotoWeb.Gettext
-      alias KatotoWeb.Router.Helpers, as: Routes
+      import KusinaWeb.ErrorHelpers
+      import KusinaWeb.Gettext
+      alias KusinaWeb.Router.Helpers, as: Routes
       import Phoenix.LiveView.Helpers
-      import KatotoWeb.Helpers.HTML
+      import KusinaWeb.Helpers.HTML
     end
   end
 
@@ -61,14 +61,14 @@ defmodule KatotoWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import KatotoWeb.Gettext
+      import KusinaWeb.Gettext
     end
   end
 
   def live do
     quote do
       use Phoenix.LiveView
-      alias KatotoWeb.Router.Helpers, as: Routes
+      alias KusinaWeb.Router.Helpers, as: Routes
     end
   end
 

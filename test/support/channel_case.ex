@@ -1,4 +1,4 @@
-defmodule KatotoWeb.ChannelCase do
+defmodule KusinaWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule KatotoWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use KatotoWeb.ChannelCase, async: true`, although
+  by setting `use KusinaWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -23,15 +23,15 @@ defmodule KatotoWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint KatotoWeb.Endpoint
+      @endpoint KusinaWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Katoto.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Kusina.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Katoto.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Kusina.Repo, {:shared, self()})
     end
 
     :ok

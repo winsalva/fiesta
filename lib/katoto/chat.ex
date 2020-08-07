@@ -1,12 +1,12 @@
-defmodule Katoto.Chat do
+defmodule Kusina.Chat do
   @moduledoc """
   The Chat context.
   """
 
   import Ecto.Query, warn: false
-  alias Katoto.Repo
+  alias Kusina.Repo
 
-  alias Katoto.Chat.Lobby
+  alias Kusina.Chat.Lobby
 
   @doc """
   Returns the list of lobbies.

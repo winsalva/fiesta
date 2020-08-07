@@ -1,10 +1,10 @@
-defmodule Katoto.ChatTest do
-  use Katoto.DataCase
+defmodule Kusina.ChatTest do
+  use Kusina.DataCase
 
-  alias Katoto.Chat
+  alias Kusina.Chat
 
   describe "lobbies" do
-    alias Katoto.Chat.Lobby
+    alias Kusina.Chat.Lobby
 
     @valid_attrs %{name: "some name"}
     @update_attrs %{name: "some updated name"}

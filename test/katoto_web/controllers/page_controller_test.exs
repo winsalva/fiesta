@@ -1,5 +1,5 @@
-defmodule KatotoWeb.PageControllerTest do
-  use KatotoWeb.ConnCase
+defmodule KusinaWeb.PageControllerTest do
+  use KusinaWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

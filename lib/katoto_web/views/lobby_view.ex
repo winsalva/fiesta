@@ -1,5 +1,5 @@
-defmodule KatotoWeb.LobbyView do
-  use KatotoWeb, :view
+defmodule KusinaWeb.LobbyView do
+  use KusinaWeb, :view
 
-  alias KatotoWeb.Modal.NewLobbyComponent
+  alias KusinaWeb.Modal.NewLobbyComponent
 end
