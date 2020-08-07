@@ -30,6 +30,24 @@ module.exports = {
         '17/20': `${baseWidth * 17}%`,
         '18/20': `${baseWidth * 18}%`,
         '19/20': `${baseWidth * 19}%`,
+      },
+      colors: {
+        primary: {
+          default: "#000000"
+        },
+        secondary: {
+          default: "#EBE9E6"
+        },
+        tertiary: {
+          default: "#D5DDDB"
+        },
+        quaternary: {
+          default: "#DCE4E7"
+        }
+      },
+      zIndex: {
+        "1": "1",
+        "2": "2"
       }
     }
   }
