@@ -1,11 +1,13 @@
 @import "tailwindcss/base";
-
 @import "tailwindcss/components";
+
+/*! purgecss start ignore */
 
 @import "./components/_custom.scss";
 @import "./components/_buttons.scss";
 @import "./components/_cards.scss";
 
-@import "tailwindcss/utilities";
+/*! purgecss end ignore */
 
+@import "tailwindcss/utilities";
 @import "./custom/_utilities.scss";

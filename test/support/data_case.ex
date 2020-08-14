@@ -24,6 +24,7 @@ defmodule Kusina.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Kusina.DataCase
+      import Kusina.Factory
     end
   end
 

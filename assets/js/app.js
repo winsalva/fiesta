@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-free/js/all"
 import { Socket } from "phoenix"
 import LiveSocket from "phoenix_live_view"
 import Hooks from "./hook"
+import "alpinejs"
 
 window.jQuery = $
 window.$ = $

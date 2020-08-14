@@ -1,7 +1,7 @@
 <div class="flex flex-col">
   <div class="flex w-full flex-col-reverse md:flex-row">
-    <div class="w-full md:w-3/5 py-4 md:py-0 px-6 lg:px-12 flex flex-col justify-center">
-      <div class="text-3xl lg:text-5xl font-bold">Welcome to Kusina.io</div>
+    <div class="w-full md:w-3/5 py-4 md:py-0 px-6 lg:px-12 flex flex-col justify-center bg-gray-100">
+      <div class="text-3xl lg:text-5xl font-bold">Welcome restaurateurs!</div>
       <p class="text-lg leading-relaxed py-3 lg:py-5 text-justify">
       Who are we, you might ask. Kusina is a Filipino word that means kitchen. We support restaurateurs from local food sellers
       that cook their specialties within the comfort of their own kitchen to more established ones who have their own brick and mortar
@@ -14,7 +14,7 @@
         <button class="float-right block btn btn-outline-black text-black w-full lg:w-48 hover:text-white hover:bg-black">Setup Kitchen</button>
       </div>
     </div>
-    <div class="w-full md:w-2/5">
+    <div class="w-full md:w-2/5 hidden md:block">
       <%= img_tag Routes.static_path(@conn, "/images/hero.jpg") %>
     </div>
   </div>

@@ -1,0 +1,32 @@
+<%= form_for @changeset, "#", [as: :user, class: "p-6", phx_submit: :submit_login_form], fn f -> %>
+  <%= if @changeset.action do %>
+    <%= case @changeset.errors do %>
+      <% [] -> %>
+        <div class="alert alert-danger">
+          <p>It seems we cannot find that user.</p>
+        </div>
+      <% _ -> %>
+        <div class="alert alert-danger">
+          <p>Oops, something went wrong! Please check the errors below.</p>
+        </div>
+    <% end %>
+  <% end %>
+
+  <div class="flex flex-col -my-4">
+    <div class="flex flex-col py-4">
+      <%= label f, Pow.Ecto.Schema.user_id_field(@changeset), class: "text-sm" %>
+      <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), class: "border-b-2 border-secondary focus:outline-none focus:border-black" %>
+      <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+    </div>
+
+    <div class="flex flex-col py-4">
+      <%= label f, :password, class: "text-sm" %>
+      <%= password_input f, :password, class: "border-b-2 border-secondary focus:outline-none focus:border-black" %>
+      <%= error_tag f, :password %>
+    </div>
+  </div>
+
+  <div class="flex justify-end mt-4">
+    <%= submit "Sign in", class: "btn btn-outline-black hover:text-white hover:bg-black" %>
+  </div>
+<% end %>

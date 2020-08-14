@@ -8,7 +8,9 @@
 use Mix.Config
 
 config :kusina,
-  ecto_repos: [Kusina.Repo]
+  ecto_repos: [Kusina.Repo],
+  redirect_token_salt: "gBr5cuKllrVRN/5YYXSonMLwnxmAGhS+",
+  redirect_token_timeout: 10
 
 # Configures the endpoint
 config :kusina, KusinaWeb.Endpoint,
@@ -25,6 +27,12 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+# Configures authentication via Pow library
+config :kusina, :pow,
+  user: Kusina.Users.User,
+  repo: Kusina.Repo,
+  users_context: Kusina.Users
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
