@@ -23,14 +23,14 @@
 
       <div class="sm:w-full sm:flex-grow md:flex-grow-0 md:w-19/20 bg-gray-100 mb-12 md:mb-0">
         <main role="main">
-          <p class="alert alert-info d-none" role="alert"><%= get_flash(@conn, :info) %></p>
-          <p class="alert alert-danger d-none" role="alert"><%= get_flash(@conn, :error) %></p>
-            <%= @inner_content %>
+          <%= @inner_content %>
         </main>
       </div>
 
       <%= render "menu.html", conn: @conn %>
     </div>
+
+    <%= render CommonView, "flash_message.html", conn: @conn, class: "fixed p-6 md:p-0 md:top-8 md:right-3.5 z-50" %>
 
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>

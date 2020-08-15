@@ -26,6 +26,7 @@ defmodule KusinaWeb.Users.SessionController do
   def delete(conn, _) do
     conn
     |> Pow.Plug.delete()
+    |> put_flash(:info, "You have successfully logged out.")
     |> redirect(to: Routes.page_path(conn, :index))
   end
 end

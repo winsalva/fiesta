@@ -1,0 +1,10 @@
+<% {type, message} = get_flash_in_tuple(@conn) %>
+<div x-data="flashMessageState()" x-init="() => {addFlashMessage('<%= type %>', '<%= message %>')}"
+    class="<%= @class %>" x-show="showFlashMessages">
+  <template
+  x-on:flash.window="addFlashMessage($event.detail.type, $event.detail.message, $event.detail.title);"
+  x-on:remove-flash.window="removeFlashMessage($event.detail.id)"
+  x-for="flashMessage in flashMessages" :key="flashMessage.id">
+    <div x-html="render(flashMessage)"></div>
+  </template>
+</div>

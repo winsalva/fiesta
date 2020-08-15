@@ -46,6 +46,8 @@ defmodule KusinaWeb do
       alias KusinaWeb.Router.Helpers, as: Routes
       import Phoenix.LiveView.Helpers
       import KusinaWeb.Helpers.HTML
+      import Pow.Plug, only: [current_user: 1]
+      alias KusinaWeb.CommonView
     end
   end
 

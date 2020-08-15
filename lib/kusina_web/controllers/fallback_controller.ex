@@ -21,6 +21,6 @@ defmodule KusinaWeb.FallbackController do
   def call(conn, :already_authenticated) do
     conn
     |> put_flash(:error, "You're already authenticated")
-    |> redirect(to: Routes.lobby_path(conn, :index))
+    |> redirect(to: Routes.dashboard_path(conn, :index))
   end
 end

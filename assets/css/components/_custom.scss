@@ -24,3 +24,13 @@
 .help-block {
   @apply text-red-500 text-sm;
 }
+
+.alert-warning {@apply bg-orange-300;}
+.alert-error {@apply bg-red-300;}
+.alert-info {@apply bg-gray-300;}
+.alert-success {@apply bg-green-300;}
+
+.text-warning {@apply text-orange-900;}
+.text-error {@apply text-red-900;}
+.text-info {@apply text-gray-900;}
+.text-success {@apply text-green-900;}

@@ -27,9 +27,14 @@ defmodule KusinaWeb.Router do
   end
 
   scope "/", KusinaWeb do
-    pipe_through [:browser, :not_authenticated]
+    pipe_through :browser
 
     resources "/", PageController, only: [:index]
+  end
+
+  scope "/", KusinaWeb do
+    pipe_through [:browser, :not_authenticated]
+
     get "/signin/redirect", Users.SessionController, :signin_redirect
     get "/signup/redirect", Users.RegistrationController, :signup_redirect
   end
@@ -37,10 +42,10 @@ defmodule KusinaWeb.Router do
   scope "/", KusinaWeb do
     pipe_through [:browser, :protected]
 
+    resources "/dashboard", DashboardController, only: [:index]
     resources "/lobby", LobbyController, only: [:index]
     live "/chat/:id", ChatLive, layout: {KusinaWeb.LayoutView, "app.html"}
     delete "/logout", Users.SessionController, :delete, as: :logout
-    resources "/dashboard", DashboardController, only: [:index]
   end
 
   # Other scopes may use custom stacks.
