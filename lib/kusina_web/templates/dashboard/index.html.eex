@@ -1,3 +1,14 @@
-<div class="flex p-6 items-center justify-end">
-  <%= button "Logout", to: Routes.logout_path(@conn, :delete), method: :delete, class: "btn btn-outline-black" %>
+<div class="grid grid-cols-1 md:grid-cols-12 pt-6 pb-8 px-3.5 gap-4 p-6">
+  <div class="w-full col-span-1 md:col-span-4 md:row-start-1 md:col-start1 p-6 flex justify-between bg-white shadow-md">
+    <div class="uppercase">No. of orders today</div>
+    <div class="text-4xl font-bold">10</div>
+  </div>
+  <div class="w-full col-span-1 md:col-span-4 md:row-start-1 md:col-start1 p-6 flex justify-between bg-white shadow-md">
+    <div class="uppercase">No. of orders sold</div>
+    <div class="text-4xl font-bold">8</div>
+  </div>
+  <div class="w-full col-span-1 md:col-span-4 md:row-start-1 md:col-start1 p-6 flex justify-between bg-white shadow-md">
+    <div class="uppercase">No. of orders delivered</div>
+    <div class="text-4xl font-bold">8</div>
+  </div>
 </div>
