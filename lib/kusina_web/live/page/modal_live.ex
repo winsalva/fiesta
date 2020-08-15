@@ -30,7 +30,11 @@ defmodule KusinaWeb.Page.ModalLive do
         {:noreply,
          redirect(socket,
            to:
-             Routes.registration_path(socket, :signup_redirect,
+             Routes.session_path(
+               socket,
+               :callback,
+               :self,
+               socket.assigns.tab,
                token: generate_redirect_token(user.id)
              )
          )}
@@ -54,7 +58,13 @@ defmodule KusinaWeb.Page.ModalLive do
         {:noreply,
          redirect(socket,
            to:
-             Routes.session_path(socket, :signin_redirect, token: generate_redirect_token(user_id))
+             Routes.session_path(
+               socket,
+               :callback,
+               :self,
+               socket.assigns.tab,
+               token: generate_redirect_token(user_id)
+             )
          )}
     end
   end
