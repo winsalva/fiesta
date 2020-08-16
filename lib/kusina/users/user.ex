@@ -9,6 +9,8 @@ defmodule Kusina.Users.User do
   schema "users" do
     pow_user_fields()
 
+    has_one(:kitchen, Kusina.Kitchens.Kitchen, foreign_key: :owner_id)
+
     timestamps()
   end
 

@@ -1,14 +1,26 @@
-<div class="grid grid-cols-1 md:grid-cols-12 pt-6 pb-8 px-3.5 gap-4 p-6">
-  <div class="w-full col-span-1 md:col-span-4 md:row-start-1 md:col-start1 p-6 flex justify-between bg-white shadow-md">
-    <div class="uppercase">No. of orders today</div>
-    <div class="text-4xl font-bold">10</div>
+<%= if get_kitchen_from_user(current_user(@conn)) do %>
+  <div class="grid grid-cols-1 md:grid-cols-12 pt-6 pb-8 px-3.5 gap-4 p-6">
+    <div class="w-full col-span-1 md:col-span-4 md:row-start-1 md:col-start1 p-6 flex justify-between bg-white shadow-md">
+      <div class="uppercase">No. of orders today</div>
+      <div class="text-4xl font-bold">10</div>
+    </div>
+    <div class="w-full col-span-1 md:col-span-4 md:row-start-1 md:col-start1 p-6 flex justify-between bg-white shadow-md">
+      <div class="uppercase">No. of orders sold</div>
+      <div class="text-4xl font-bold">8</div>
+    </div>
+    <div class="w-full col-span-1 md:col-span-4 md:row-start-1 md:col-start1 p-6 flex justify-between bg-white shadow-md">
+      <div class="uppercase">No. of orders delivered</div>
+      <div class="text-4xl font-bold">8</div>
+    </div>
   </div>
-  <div class="w-full col-span-1 md:col-span-4 md:row-start-1 md:col-start1 p-6 flex justify-between bg-white shadow-md">
-    <div class="uppercase">No. of orders sold</div>
-    <div class="text-4xl font-bold">8</div>
+<% else %>
+  <div class="flex w-full justify-center items-center py-20">
+    <div class="flex flex-col w-64 justify-between">
+      <a href="https://www.vecteezy.com/free-vector/prawns" class="mb-5">
+        <img src="<%=Routes.static_path(@conn, "/images/setup_kitchen_vector.jpg") %>" class="rounded-full">
+      </a>
+      <div class="mb-5"> You haven't setup your kitchen yet. Go to your kitchen now to start cooking. </div>
+      <button class="btn btn-outline-black hover:text-white hover:bg-black">Setup kitchen</button>
+    </div>
   </div>
-  <div class="w-full col-span-1 md:col-span-4 md:row-start-1 md:col-start1 p-6 flex justify-between bg-white shadow-md">
-    <div class="uppercase">No. of orders delivered</div>
-    <div class="text-4xl font-bold">8</div>
-  </div>
-</div>
+<% end %>

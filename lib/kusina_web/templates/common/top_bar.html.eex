@@ -1,13 +1,17 @@
-<div class="w-full bg-white p-5 flex shadow-md items-center">
+<div class="w-full bg-white p-5 flex shadow-md items-center justify-between">
   <button :class="{'text-black': menuExpanded}" @click="menuExpanded = !menuExpanded"
     class="block focus:outline-none flex-shrink hidden md:block w-10 text-gray-500 hover:text-primary">
     <i class="fas fa-bars text-2xl"></i>
   </button>
-  <div class="flex-grow text-2xl px-2">Tara Let's Meat</div>
-  <div class="flex w-16 justify-between">
-    <i class="fas fa-bell text-lg"></i>
+  <%= if get_kitchen_from_user(current_user(@conn)) do %>
+    <div class="flex-grow text-2xl px-2">Tara Let's Meat</div>
+  <% end %>
+  <div class="flex flex-row-reverse w-16 justify-between">
     <%= link to: Routes.logout_path(@conn, :delete), method: :delete do %>
       <i class="fas fa-sign-out-alt text-lg"></i>
+    <% end %>
+    <%= if get_kitchen_from_user(current_user(@conn)) do %>
+      <i class="fas fa-bell text-lg"></i>
     <% end %>
   </div>
 </div>

@@ -7,6 +7,7 @@ import {
   faBars,
   faSignOutAlt,
   faSlidersH,
+  faStore,
 } from "@fortawesome/free-solid-svg-icons"
 
 export default () => {
@@ -16,7 +17,8 @@ export default () => {
     faChartLine,
     faBars,
     faSignOutAlt,
-    faSlidersH
+    faSlidersH,
+    faStore
   )
   dom.watch();
 }

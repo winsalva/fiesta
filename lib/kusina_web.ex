@@ -48,6 +48,7 @@ defmodule KusinaWeb do
       import KusinaWeb.Helpers.HTML
       import Pow.Plug, only: [current_user: 1]
       alias KusinaWeb.CommonView
+      import KusinaWeb.ViewHelpers
     end
   end
 
