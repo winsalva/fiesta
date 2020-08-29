@@ -10,8 +10,8 @@ defmodule Kusina.Kitchens.Kitchen do
     belongs_to(:owner, Kusina.Users.User)
   end
 
-  @required [:name, :description, :owner_id]
-  @attrs @required
+  @required [:name, :owner_id]
+  @attrs @required ++ [:description]
 
   def changeset(kitchen_or_changeset, attrs \\ %{}) do
     kitchen_or_changeset

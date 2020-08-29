@@ -8,6 +8,8 @@ import {
   faSignOutAlt,
   faSlidersH,
   faStore,
+  faArrowRight,
+  faArrowLeft
 } from "@fortawesome/free-solid-svg-icons"
 
 export default () => {
@@ -18,7 +20,9 @@ export default () => {
     faBars,
     faSignOutAlt,
     faSlidersH,
-    faStore
+    faStore,
+    faArrowRight,
+    faArrowLeft
   )
   dom.watch();
 }

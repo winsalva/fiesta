@@ -19,12 +19,11 @@ defmodule Kusina.Kitchens.KitchenTest do
 
     test "valid changeset", %{params: params} do
       changeset = Kitchen.changeset(%Kitchen{}, params)
-
       assert changeset.valid?
     end
 
     test "invalid changeset if missing required attr", %{params: params} do
-      params = Map.drop(params, [:name, :description, :owner_id])
+      params = Map.drop(params, [:name])
       changeset = Kitchen.changeset(%Kitchen{}, params)
 
       refute changeset.valid?

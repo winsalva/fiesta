@@ -19,4 +19,8 @@ defmodule Kusina.Kitchens do
     |> Kitchen.changeset(params)
     |> Repo.update()
   end
+
+  def change_kitchen(kitchen, params \\ %{})
+  def change_kitchen(nil, params), do: Kitchen.changeset(%Kitchen{}, params)
+  def change_kitchen(kitchen, params), do: Kitchen.changeset(kitchen, params)
 end

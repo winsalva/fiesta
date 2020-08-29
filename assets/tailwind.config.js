@@ -52,10 +52,14 @@ module.exports = {
       inset: {
         "1/2": "50%",
         "3.5": "0.875rem",
-        "8": "2rem"
+        "8": "2rem",
+        "12": "3rem"
       },
       spacing: {
         "1/6": "16.666667%"
+      },
+      maxHeight: {
+        "32": "8rem"
       }
     }
   }

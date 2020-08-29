@@ -1,0 +1,19 @@
+<div class="relative setting-screen">
+  <%= form_for @changeset, "#", [as: :kitchen, class: "flex flex-col w-full justify-center items-center p-6 md:p-20", phx_change: :validate, phx_submit: :submit], fn f -> %>
+    <div class="font-normal text-gray-500"> Step 2 of 3 </div>
+    <div class="font-semibold text-2xl md:text-3xl"> Briefly describe your store. </div>
+    <%= textarea f, :description, rows: 1, class: "w-full md:w-1/2 leading-8 text-lg md:text-xl bg-transparent border-b-2 p-4 border-secondary focus:outline-none focus:border-black resize-none" %>
+    <%= error_tag f, :description %>
+  <% end %>
+
+  <div class="flex flex-row-reverse w-full justify-between fixed bottom-12 md:absolute md:bottom-0 p-2 md:p-6">
+    <%= live_patch to: Routes.live_path(@socket, Index, %{step: 3}), replace: false, class: "flex items-center text-gray-700 hover:text-primary" do %>
+      <div class="mr-2 font-semibold text-normal md:text-xl"><%= if @changeset.changes[:description] && @changeset.valid? , do: "Next", else: "Skip" %></div>
+      <i class="fas fa-arrow-right text-lg md:text-2xl"></i>
+    <% end %>
+    <%= live_patch to: Routes.live_path(@socket, Index, %{step: 1}), replace: false, class: "flex items-center text-gray-700 hover:text-primary" do %>
+      <i class="fas fa-arrow-left text-lg md:text-2xl"></i>
+      <div class="ml-2 font-semibold text-normal md:text-xl">Back</div>
+    <% end %>
+  </div>
+</div>

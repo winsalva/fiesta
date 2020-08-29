@@ -6,6 +6,7 @@ defmodule KusinaWeb.Router do
     plug Pow.Plug.RequireAuthenticated,
       error_handler: KusinaWeb.FallbackController
 
+    plug KusinaWeb.Plugs.PutCurrentUserSession
     plug :put_layout, {KusinaWeb.LayoutView, "app.html"}
   end
 
@@ -43,8 +44,10 @@ defmodule KusinaWeb.Router do
 
     resources "/dashboard", DashboardController, only: [:index]
     resources "/lobby", LobbyController, only: [:index]
-    live "/chat/:id", ChatLive, layout: {KusinaWeb.LayoutView, "app.html"}
     delete "/logout", Users.SessionController, :delete, as: :logout
+
+    live "/kitchen", KitchenLive.Index, layout: {KusinaWeb.LayoutView, "app.html"}
+    live "/chat/:id", ChatLive, layout: {KusinaWeb.LayoutView, "app.html"}
   end
 
   # Other scopes may use custom stacks.

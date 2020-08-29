@@ -34,3 +34,9 @@
 .text-error {@apply text-red-900;}
 .text-info {@apply text-gray-900;}
 .text-success {@apply text-green-900;}
+
+@screen md {
+  .setting-screen {
+    height: calc(100vh - theme('spacing.16'));
+  }
+}

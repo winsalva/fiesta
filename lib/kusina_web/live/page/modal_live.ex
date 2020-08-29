@@ -1,11 +1,10 @@
 defmodule KusinaWeb.Page.ModalLive do
-  use Phoenix.LiveView
+  use KusinaWeb, :live
 
   alias Kusina.Users
   alias Kusina.Users.User
   alias KusinaWeb.Endpoint
   alias KusinaWeb.PageView
-  alias KusinaWeb.Router.Helpers, as: Routes
 
   @redirect_token_salt Application.get_env(:kusina, :redirect_token_salt)
   @redirect_token_timeout Application.get_env(:kusina, :redirect_token_timeout)

@@ -14,7 +14,7 @@
         </a>
       </li>
       <li class="w-auto md:w-full mx-auto md:px-3 mb-4">
-        <a href="<%= Routes.dashboard_path(@conn, :index) %>" class="flex flex-col md:flex-row items-center md:justify-start">
+        <a href="<%= Routes.live_path(@conn, KusinaWeb.KitchenLive.Index) %>" class="flex flex-col md:flex-row items-center md:justify-start">
           <i class="fas fa-store text-2xl md:text-base md:mr-2"></i>
           <span class="text-xs md:text-base">My Kitchen</span>
         </a>
