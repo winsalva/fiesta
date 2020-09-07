@@ -6,6 +6,8 @@ defmodule Kusina.Kitchens do
   alias Kusina.Kitchens.Kitchen
   alias Kusina.Repo
 
+  def create_kitchen(%Ecto.Changeset{} = changeset), do: Repo.insert(changeset)
+
   def create_kitchen(params) do
     %Kitchen{}
     |> Kitchen.changeset(params)

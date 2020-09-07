@@ -6,6 +6,7 @@ defmodule Kusina.Repo.Migrations.CreateKitchens do
       add(:name, :string)
       add(:description, :text)
       add(:owner_id, references(:users, on_delete: :delete_all))
+      timestamps()
     end
 
     create unique_index(:kitchens, [:owner_id])

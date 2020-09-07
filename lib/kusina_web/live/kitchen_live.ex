@@ -28,7 +28,7 @@ defmodule KusinaWeb.KitchenLive.Index do
 
       %User{kitchen: nil} = user ->
         socket
-        |> assign(current_user: user)
+        |> assign(current_user: user, add_category: true)
         |> verify_steps(params)
         |> reply_socket()
 
@@ -59,6 +59,39 @@ defmodule KusinaWeb.KitchenLive.Index do
     socket
     |> assign(changeset: changeset)
     |> noreply_socket()
+  end
+
+  def handle_event("submit", %{"kitchen" => params}, socket) do
+    changeset =
+      socket.assigns.changeset
+      |> apply_changes()
+      |> Kitchens.change_kitchen(params)
+
+    socket
+    |> assign(:changeset, changeset)
+    |> assign(:add_category, true)
+    |> noreply_socket()
+  end
+
+  def handle_event("create_kitchen", _, %{assigns: %{changeset: changeset}} = socket) do
+    with %{valid?: true} <- changeset,
+         {:ok, _kitchen} <- Kitchens.create_kitchen(changeset) do
+      socket
+      |> put_flash(
+        :success,
+        "Congratulations! You have successfully created your kitchen! You can now start adding items to your menu."
+      )
+      |> redirect(to: Routes.dashboard_path(socket, :index))
+      |> noreply_socket()
+    else
+      _ ->
+        socket
+        |> put_flash(
+          :error,
+          "Invalid inputs were given when creating your kitchen. Please review your inputs."
+        )
+        |> noreply_socket()
+    end
   end
 
   # Private Functions

@@ -48,7 +48,8 @@ defmodule Kusina.MixProject do
       {:ecto_enum, "~> 1.4"},
       {:pow, "~> 1.0.20"},
       {:ex_machina, "~> 2.4"},
-      {:faker, "~> 0.14", only: :test}
+      {:faker, "~> 0.14", only: :test},
+      {:money, "~> 1.7"}
     ]
   end
 
