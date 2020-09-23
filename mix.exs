@@ -10,7 +10,11 @@ defmodule Kusina.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      dialyzer: [
+        plt_core_path: "priv/plts",
+        plt_file: {:no_warn, "priv/plts/dialyzer.plt"}
+      ]
     ]
   end
 
@@ -49,7 +53,8 @@ defmodule Kusina.MixProject do
       {:pow, "~> 1.0.20"},
       {:ex_machina, "~> 2.4"},
       {:faker, "~> 0.14", only: :test},
-      {:money, "~> 1.7"}
+      {:money, "~> 1.7"},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
     ]
   end
 
