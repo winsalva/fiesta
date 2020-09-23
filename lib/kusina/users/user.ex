@@ -5,7 +5,7 @@ defmodule Kusina.Users.User do
 
   import Pow.Ecto.Schema.Changeset, only: [user_id_field_changeset: 3, new_password_changeset: 3]
 
-  @pow_config Application.compile_env!(:kusina, :pow, [])
+  @pow_config Application.compile_env!(:kusina, :pow)
 
   schema "users" do
     pow_user_fields()
