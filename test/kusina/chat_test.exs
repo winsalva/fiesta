@@ -2,10 +2,9 @@ defmodule Kusina.ChatTest do
   use Kusina.DataCase
 
   alias Kusina.Chat
+  alias Kusina.Chat.Lobby
 
   describe "lobbies" do
-    alias Kusina.Chat.Lobby
-
     @valid_attrs %{name: "some name"}
     @update_attrs %{name: "some updated name"}
     @invalid_attrs %{name: nil}

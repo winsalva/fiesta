@@ -1,4 +1,5 @@
 defmodule KusinaWeb.ChatLive do
+  @moduledoc false
   use Phoenix.LiveView, container: {:div, class: "flex flex-grow"}
 
   alias KusinaWeb.ChatView

@@ -1,4 +1,5 @@
 defmodule Kusina.UserFactory do
+  @moduledoc false
   import Kusina.TestHelpers
 
   defmacro __using__(_opts) do

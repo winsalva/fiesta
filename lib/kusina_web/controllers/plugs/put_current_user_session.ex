@@ -1,5 +1,5 @@
 defmodule KusinaWeb.Plugs.PutCurrentUserSession do
-  @doc """
+  @moduledoc """
   Puts current user's id into session for live view consumption
   """
   @behaviour Plug

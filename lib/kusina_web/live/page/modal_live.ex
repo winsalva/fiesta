@@ -1,4 +1,5 @@
 defmodule KusinaWeb.Page.ModalLive do
+  @moduledoc false
   use KusinaWeb, :live
 
   alias Kusina.Users
@@ -6,8 +7,8 @@ defmodule KusinaWeb.Page.ModalLive do
   alias KusinaWeb.Endpoint
   alias KusinaWeb.PageView
 
-  @redirect_token_salt Application.get_env(:kusina, :redirect_token_salt)
-  @redirect_token_timeout Application.get_env(:kusina, :redirect_token_timeout)
+  @redirect_token_salt Application.compile_env!(:kusina, :redirect_token_salt)
+  @redirect_token_timeout Application.compile_env!(:kusina, :redirect_token_timeout)
 
   def render(assigns) do
     PageView.render("modal.html", assigns)

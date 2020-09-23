@@ -1,4 +1,5 @@
 defmodule KusinaWeb.Modal.NewLobbyComponent do
+  @moduledoc false
   use Phoenix.LiveComponent
 
   alias KusinaWeb.LobbyView

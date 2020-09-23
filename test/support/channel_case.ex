@@ -17,6 +17,8 @@ defmodule KusinaWeb.ChannelCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
       # Import conveniences for testing with channels
@@ -28,10 +30,10 @@ defmodule KusinaWeb.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Kusina.Repo)
+    :ok = Sandbox.checkout(Kusina.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Kusina.Repo, {:shared, self()})
+      Sandbox.mode(Kusina.Repo, {:shared, self()})
     end
 
     :ok
