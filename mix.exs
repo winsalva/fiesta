@@ -54,7 +54,7 @@ defmodule Kusina.MixProject do
       {:ex_machina, "~> 2.4"},
       {:faker, "~> 0.14", only: :test},
       {:money, "~> 1.7"},
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.5.0-rc.2", only: [:dev, :test], runtime: false}
     ]
   end
