@@ -22,7 +22,7 @@ defmodule KusinaWeb.ConnCase do
   using do
     quote do
       # Import conveniences for testing with connections
-      use Phoenix.ConnTest
+      import Phoenix.ConnTest
       alias KusinaWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
