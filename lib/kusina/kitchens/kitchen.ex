@@ -1,4 +1,5 @@
 defmodule Kusina.Kitchens.Kitchen do
+  @moduledoc false
   use Ecto.Schema
 
   import Ecto.Changeset

@@ -5,7 +5,7 @@ defmodule KusinaWeb.Users.SessionController do
 
   alias Kusina.Users
 
-  @redirect_token_salt Application.get_env(:kusina, :redirect_token_salt)
+  @redirect_token_salt Application.compile_env!(:kusina, :redirect_token_salt)
 
   action_fallback(KusinaWeb.FallbackController)
 

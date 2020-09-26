@@ -1,4 +1,5 @@
 defmodule Kusina.Chat.LobbyTest do
+  @moduledoc false
   use Kusina.DataCase
 
   alias Kusina.Chat.Lobby

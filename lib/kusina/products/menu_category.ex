@@ -1,4 +1,5 @@
 defmodule Kusina.Products.MenuCategory do
+  @moduledoc false
   use Ecto.Schema
 
   import Ecto.Changeset

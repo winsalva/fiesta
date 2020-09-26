@@ -17,10 +17,12 @@ defmodule KusinaWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
       # Import conveniences for testing with connections
-      use Phoenix.ConnTest
+      import Phoenix.ConnTest
       alias KusinaWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
@@ -29,10 +31,10 @@ defmodule KusinaWeb.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Kusina.Repo)
+    :ok = Sandbox.checkout(Kusina.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Kusina.Repo, {:shared, self()})
+      Sandbox.mode(Kusina.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

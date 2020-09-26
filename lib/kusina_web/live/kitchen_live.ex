@@ -1,4 +1,5 @@
 defmodule KusinaWeb.KitchenLive.Index do
+  @moduledoc false
   use KusinaWeb, :live
 
   import Ecto.Changeset, only: [apply_changes: 1]
@@ -33,7 +34,7 @@ defmodule KusinaWeb.KitchenLive.Index do
         |> reply_socket()
 
       %User{kitchen: %Kitchen{}} ->
-        # TODO: Redirect to show
+        # Redirect to show
         reply_socket(socket)
     end
   end

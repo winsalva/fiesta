@@ -4,9 +4,9 @@ defmodule Kusina.Chat do
   """
 
   import Ecto.Query, warn: false
-  alias Kusina.Repo
 
   alias Kusina.Chat.Lobby
+  alias Kusina.Repo
 
   @doc """
   Returns the list of lobbies.
