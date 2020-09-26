@@ -1,4 +1,4 @@
-<%= form_for @changeset, "#", [as: :user, class: "p-6", phx_submit: :submit_login_form], fn f -> %>
+<%= form_for @changeset, @form_action, [as: :user, class: "p-6", phx_submit: :submit_login_form, phx_trigger_action: @trigger_submit], fn f -> %>
   <%= if @changeset.action do %>
     <%= case @changeset.errors do %>
       <% [] -> %>
@@ -27,6 +27,6 @@
   </div>
 
   <div class="flex justify-end mt-4">
-    <%= submit "Sign in", class: "btn btn-outline-black hover:text-white hover:bg-black" %>
+    <%= submit "Sign in", class: "btn btn-outline-black hover:text-white hover:bg-black", phx_disable_with: "Logging in..." %>
   </div>
 <% end %>

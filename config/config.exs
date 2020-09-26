@@ -8,9 +8,7 @@
 use Mix.Config
 
 config :kusina,
-  ecto_repos: [Kusina.Repo],
-  redirect_token_salt: "gBr5cuKllrVRN/5YYXSonMLwnxmAGhS+",
-  redirect_token_timeout: 10
+  ecto_repos: [Kusina.Repo]
 
 # Configures the endpoint
 config :kusina, KusinaWeb.Endpoint,

@@ -21,8 +21,12 @@
   background-size: cover;
 }
 
-.help-block {
+.invalid-feedback {
   @apply text-red-500 text-sm;
+}
+
+.phx-no-feedback.invalid-feedback, .phx-no-feedback .invalid-feedback {
+  @apply hidden;
 }
 
 .alert-warning {@apply bg-orange-300;}
