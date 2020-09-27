@@ -36,7 +36,8 @@ defmodule KusinaWeb.Router do
   scope "/", KusinaWeb do
     pipe_through [:browser, :not_authenticated]
 
-    get "/callback/:provider/:type", Users.SessionController, :callback
+    post "/signup", Users.RegistrationController, :create, as: :signup
+    post "/login", Users.SessionController, :create, as: :login
   end
 
   scope "/", KusinaWeb do

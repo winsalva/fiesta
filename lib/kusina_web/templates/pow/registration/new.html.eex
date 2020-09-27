@@ -1,4 +1,4 @@
-<%= form_for @changeset, "#", [as: :user, class: "p-6", phx_submit: :submit_registration_form], fn f -> %>
+<%= form_for @changeset, @form_action, [as: :user, class: "p-6", phx_submit: :submit_registration_form, phx_trigger_action: @trigger_submit], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
@@ -26,6 +26,6 @@
   </div>
 
   <div class="flex justify-end mt-4">
-    <%= submit "Register", class: "btn btn-outline-black hover:text-white hover:bg-black" %>
+    <%= submit "Register", class: "btn btn-outline-black hover:text-white hover:bg-black", phx_disable_with: "Registering..." %>
   </div>
 <% end %>
