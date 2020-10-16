@@ -1,5 +1,18 @@
-const Hooks = {
-  HandleModal: {}
+import { moveCursorToEnd } from "./helpers"
+
+let Hooks = {
+  HandleModal: {},
+  FocusInput: {},
+}
+
+Hooks.FocusInput = {
+  mounted() {
+    this.handleEvent("focus", () => {
+      const input = this.el.querySelectorAll("input[type='text']")[0];
+      input.focus();
+      moveCursorToEnd(input);
+    })
+  }
 }
 
 Hooks.HandleModal = {
@@ -13,4 +26,4 @@ Hooks.HandleModal = {
   }
 }
 
-export default Hooks
+export default Hooks;

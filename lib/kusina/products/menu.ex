@@ -7,6 +7,8 @@ defmodule Kusina.Products.Menu do
   schema "menus" do
     has_many(:categories, Kusina.Products.MenuCategory)
     belongs_to(:kitchen, Kusina.Kitchens.Kitchen)
+
+    timestamps()
   end
 
   @required [:kitchen_id]

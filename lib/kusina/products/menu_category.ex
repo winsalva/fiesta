@@ -11,9 +11,11 @@ defmodule Kusina.Products.MenuCategory do
     belongs_to(:menu, Kusina.Products.Menu)
 
     has_many(:items, Kusina.Products.MenuItem)
+
+    timestamps()
   end
 
-  @required [:menu_id]
+  @required [:menu_id, :name]
   @attrs @required
 
   def changeset(model_or_changeset, attrs \\ %{}) do

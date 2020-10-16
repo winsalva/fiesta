@@ -1,0 +1,36 @@
+<div class="mb-2">
+  <div x-data="{}" class="border border-gray-300 shadow-sm p-3" phx-click="toggle_open" phx-target="<%= @myself %>">
+    <%= form_for @changeset, "#", [id: "menu-category-#{@id}-form", class: "flex justify-between items-center", phx_submit: "update", phx_target: @myself, phx_hook: "FocusInput"], fn f -> %>
+      <%= if !@editing do %>
+        <%= @menu_category.name %>
+      <% end %>
+      <%= if @editing do %>
+        <%= text_input f, :name, id: "menu_category_#{@id}_name", class: "focus:outline-none md:flex-grow mr-3", "x-on:click.stop": true %>
+      <% end %>
+      <div class="flex items-center">
+        <%= if @editing do %>
+          <button type="button" class="border border-gray-300 rounded-sm w-6 mr-3 text-gray-500 hover:text-gray-800" phx-click="toggle_editing" phx-target="<%= @myself %>">
+            <i class="fas fa-times"></i>
+          </button>
+          <button class="border border-gray-300 rounded-sm w-6 text-gray-500 hover:text-gray-800" type="submit" x-on:click.stop>
+            <i class="fas fa-check"></i>
+          </button>
+        <% end %>
+        <%= if !@editing do %>
+          <button phx-click="toggle_editing" phx-target="<%= @myself %>" class="border border-gray-300 rounded-sm w-6 mr-3 text-gray-500 hover:text-gray-800" type="button">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button phx-click="delete" phx-target="<%= @myself %>" class="border border-gray-300 rounded-sm w-6 mr-3 text-gray-500 hover:text-gray-800" type="button">
+            <i class="fas fa-trash"></i>
+          </button>
+        <% end %>
+
+        <i class="fas fa-chevron-down <%= if @open, do: "transform rotate-180" %>" phx-click="toggle_open" phx-target="<%= @myself %>"></i>
+      </div>
+    <% end %>
+  </div>
+
+  <%= if @open do %>
+    <div class="p-3 boder-b border-gray-300"> Menu items here </div>
+  <% end %>
+</div>

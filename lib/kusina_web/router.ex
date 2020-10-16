@@ -48,6 +48,7 @@ defmodule KusinaWeb.Router do
     delete "/logout", Users.SessionController, :delete, as: :logout
 
     live "/kitchen", KitchenLive.Index, layout: {KusinaWeb.LayoutView, "app.html"}
+    live "/kitchen/:id", KitchenLive.Form, layout: {KusinaWeb.LayoutView, "app.html"}
     live "/chat/:id", ChatLive, layout: {KusinaWeb.LayoutView, "app.html"}
   end
 

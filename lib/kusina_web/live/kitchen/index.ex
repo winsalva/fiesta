@@ -3,12 +3,14 @@ defmodule KusinaWeb.KitchenLive.Index do
   use KusinaWeb, :live
 
   import Ecto.Changeset, only: [apply_changes: 1]
+  import KusinaWeb.Helpers.Live
 
   alias Kusina.Kitchens
   alias Kusina.Kitchens.Kitchen
   alias Kusina.Repo
   alias Kusina.Users
   alias Kusina.Users.User
+  alias KusinaWeb.KitchenLive.Form
   alias KusinaWeb.KitchenView
 
   def render(%{step: step} = assigns) do
@@ -16,7 +18,7 @@ defmodule KusinaWeb.KitchenLive.Index do
   end
 
   def render(assigns) do
-    KitchenView.render("form.html", assigns)
+    KitchenView.render("setup_step_1.html", assigns)
   end
 
   def mount(params, %{"user_id" => user_id}, socket) do
@@ -31,11 +33,12 @@ defmodule KusinaWeb.KitchenLive.Index do
         socket
         |> assign(current_user: user, add_category: true)
         |> verify_steps(params)
-        |> reply_socket()
+        |> mount_socket()
 
-      %User{kitchen: %Kitchen{}} ->
-        # Redirect to show
-        reply_socket(socket)
+      %User{kitchen: %Kitchen{id: id}} ->
+        socket
+        |> redirect(to: Routes.live_path(socket, Form, id))
+        |> mount_socket()
     end
   end
 
@@ -76,7 +79,7 @@ defmodule KusinaWeb.KitchenLive.Index do
 
   def handle_event("create_kitchen", _, %{assigns: %{changeset: changeset}} = socket) do
     with %{valid?: true} <- changeset,
-         {:ok, _kitchen} <- Kitchens.create_kitchen(changeset) do
+         {:ok, _kitchen} <- Kitchens.setup_kitchen(changeset) do
       socket
       |> put_flash(
         :success,
@@ -96,16 +99,6 @@ defmodule KusinaWeb.KitchenLive.Index do
   end
 
   # Private Functions
-
-  defp unauthorize(socket) do
-    socket
-    |> put_flash(:error, "You are unauthorized!")
-    |> redirect(to: Routes.dashboard_path(socket, :index))
-    |> reply_socket()
-  end
-
-  defp reply_socket(socket), do: {:ok, socket}
-  defp noreply_socket(socket), do: {:noreply, socket}
 
   defp go_back_one_step(%{assigns: %{step: step}}) when not is_nil(step) and step != 1,
     do: step - 1

@@ -40,7 +40,8 @@ defmodule KusinaWeb.Page.ModalLive do
         {:noreply, assign(socket, login_changeset: changeset)}
 
       %User{} ->
-        {:noreply, assign(socket, trigger_login_submit: true)}
+        changeset = User.login_changeset(%User{}, params)
+        {:noreply, assign(socket, login_changeset: changeset, trigger_login_submit: true)}
     end
   end
 

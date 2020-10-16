@@ -75,6 +75,13 @@ defmodule KusinaWeb do
     end
   end
 
+  def live_component do
+    quote do
+      use Phoenix.LiveComponent
+      alias KusinaWeb.Router.Helpers, as: Routes
+    end
+  end
+
   @doc """
   When used, dispatch to the appropriate controller/view/etc.
   """

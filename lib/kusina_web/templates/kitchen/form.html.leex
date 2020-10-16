@@ -1,1 +1,15 @@
-<div> Kitchen Test Form </div>
+<div class="flex flex-col">
+  <div class="flex px-5 font-normal text-lg bg-white">
+    <% active_tab_class = "border-b-4 border-black" %>
+    <a class="py-5 px-5 mr-3 cursor-pointer <%= if @tab == "menu", do: active_tab_class %>" phx-click="change_tab" phx-value-tab="menu">Menu</a>
+    <a class="py-5 px-5 cursor-pointer <%= if @tab == "details", do: active_tab_class %>" phx-click="change_tab" phx-value-tab="details">Details</a>
+  </div>
+
+  <%= if @tab == "menu" do %>
+    <%= render "subform/menu.html", assigns %>
+  <% end %>
+
+  <%= if @tab == "details" do %>
+    <%= render "subform/details.html", assigns %>
+  <% end %>
+</div>

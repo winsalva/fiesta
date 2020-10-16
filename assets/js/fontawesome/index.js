@@ -9,7 +9,12 @@ import {
   faSlidersH,
   faStore,
   faArrowRight,
-  faArrowLeft
+  faArrowLeft,
+  faCheck,
+  faTimes,
+  faChevronDown,
+  faEdit,
+  faTrash
 } from "@fortawesome/free-solid-svg-icons"
 
 export default () => {
@@ -22,7 +27,12 @@ export default () => {
     faSlidersH,
     faStore,
     faArrowRight,
-    faArrowLeft
+    faArrowLeft,
+    faCheck,
+    faTimes,
+    faChevronDown,
+    faEdit,
+    faTrash
   )
   dom.watch();
 }
