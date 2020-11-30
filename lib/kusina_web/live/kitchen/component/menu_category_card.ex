@@ -2,8 +2,11 @@ defmodule KusinaWeb.KitchenLive.Component.MenuCategoryCard do
   @moduledoc false
   use KusinaWeb, :live_component
 
+  import KusinaWeb.Helpers.Live
+
   alias Kusina.Kitchens
   alias Kusina.Products.MenuCategory
+  alias Kusina.Products.MenuItem
   alias KusinaWeb.KitchenView
 
   def render(assigns) do
@@ -11,7 +14,9 @@ defmodule KusinaWeb.KitchenLive.Component.MenuCategoryCard do
   end
 
   def mount(socket) do
-    {:ok, assign(socket, open: false, editing: false)}
+    socket
+    |> assign(open: false, action: :edit)
+    |> mount_socket()
   end
 
   def update(assigns, socket) do
@@ -24,16 +29,25 @@ defmodule KusinaWeb.KitchenLive.Component.MenuCategoryCard do
     {:ok, assign(socket, updated_assigns)}
   end
 
-  def handle_event("update", %{"menu_category" => params}, socket) do
-    case Kitchens.update_menu_category(socket.assigns.menu_category, params) do
-      {:ok, menu_category} ->
-        changeset = MenuCategory.changeset(menu_category)
-
-        {:noreply,
-         assign(socket, menu_category: menu_category, changeset: changeset, editing: false)}
+  def handle_event("create", %{"menu_category" => params}, socket) do
+    case Kitchens.create_menu_category(params) do
+      {:ok, _menu_category} ->
+        send(self(), :refresh)
+        {:noreply, push_event(socket, "hide_form", %{form: "menu_category_form"})}
 
       _ ->
-        {:noreply, assign(socket, editing: false)}
+        {:noreply, socket}
+    end
+  end
+
+  def handle_event("update", %{"menu_category" => params}, socket) do
+    case Kitchens.update_menu_category(socket.assigns.menu_category, params) do
+      {:ok, _menu_category} ->
+        send(self(), :refresh)
+        {:noreply, assign(socket, action: :show, open: false)}
+
+      _ ->
+        {:noreply, assign(socket, action: :show, open: false)}
     end
   end
 
@@ -50,17 +64,18 @@ defmodule KusinaWeb.KitchenLive.Component.MenuCategoryCard do
     {:noreply, socket}
   end
 
-  def handle_event("toggle_editing", _params, socket) do
-    toggled_editing = !socket.assigns.editing
-
+  def handle_event("change_action", %{"action" => action}, socket)
+      when action in ["edit", "new"] do
     socket =
-      if toggled_editing do
-        push_event(socket, "focus", %{})
-      else
-        socket
-      end
+      socket
+      |> assign(action: String.to_existing_atom(action))
+      |> push_event("focus", %{})
 
-    {:noreply, assign(socket, editing: toggled_editing)}
+    {:noreply, socket}
+  end
+
+  def handle_event("change_action", %{"action" => action}, socket) do
+    {:noreply, assign(socket, action: String.to_existing_atom(action))}
   end
 
   def handle_event("toggle_open", _params, socket) do

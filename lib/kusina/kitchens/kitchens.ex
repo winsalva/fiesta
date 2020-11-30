@@ -7,6 +7,7 @@ defmodule Kusina.Kitchens do
   alias Kusina.Kitchens.Kitchen
   alias Kusina.Products.Menu
   alias Kusina.Products.MenuCategory
+  alias Kusina.Products.MenuItem
   alias Kusina.Repo
 
   def create_kitchen(%Ecto.Changeset{} = changeset), do: Repo.insert(changeset)
@@ -59,4 +60,10 @@ defmodule Kusina.Kitchens do
   def change_kitchen(kitchen, params \\ %{})
   def change_kitchen(nil, params), do: Kitchen.changeset(%Kitchen{}, params)
   def change_kitchen(kitchen, params), do: Kitchen.changeset(kitchen, params)
+
+  def create_menu_item(params) do
+    %MenuItem{}
+    |> MenuItem.changeset(params)
+    |> Repo.insert()
+  end
 end

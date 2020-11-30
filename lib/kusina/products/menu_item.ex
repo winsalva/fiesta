@@ -10,9 +10,11 @@ defmodule Kusina.Products.MenuItem do
     field(:price, Money.Ecto.Composite.Type)
 
     belongs_to(:menu_category, Kusina.Products.MenuCategory)
+
+    timestamps()
   end
 
-  @required [:name, :menu_category_id]
+  @required [:name, :menu_category_id, :price]
   @attrs @required ++ [:description]
 
   def changeset(model_or_changeset, attrs \\ %{}) do

@@ -2,10 +2,12 @@ defmodule KusinaWeb.KitchenLive.Form do
   @moduledoc false
   use KusinaWeb, :live
 
+  import Ecto.Query
   import KusinaWeb.Helpers.Live
 
   alias Kusina.Kitchens
   alias Kusina.Products.MenuCategory
+  alias Kusina.Products.MenuItem
   alias Kusina.Repo
   alias KusinaWeb.KitchenView
 
@@ -16,16 +18,10 @@ defmodule KusinaWeb.KitchenLive.Form do
   def mount(%{"id" => id}, _, socket) do
     id
     |> Kitchens.get_kitchen()
-    |> Repo.preload(menu: :categories)
+    |> force_preload(false)
     |> case do
-      nil ->
-        unauthorize(socket)
-
-      kitchen ->
-        assign(socket,
-          kitchen: kitchen,
-          menu_category_changeset: MenuCategory.changeset(%MenuCategory{}, %{})
-        )
+      nil -> unauthorize(socket)
+      kitchen -> assign(socket, kitchen: kitchen)
     end
     |> assign(tab: "menu")
     |> mount_socket()
@@ -35,19 +31,19 @@ defmodule KusinaWeb.KitchenLive.Form do
     {:noreply, assign(socket, tab: tab)}
   end
 
-  def handle_event("create_menu_category", %{"menu_category" => params}, socket) do
-    case Kitchens.create_menu_category(params) do
-      {:ok, _menu_category} ->
-        kitchen = Repo.preload(socket.assigns.kitchen, [menu: :categories], force: true)
-        {:noreply, assign(socket, kitchen: kitchen)}
-
-      _ ->
-        {:noreply, socket}
-    end
-  end
-
   def handle_info(:refresh, socket) do
-    kitchen = Repo.preload(socket.assigns.kitchen, [menu: :categories], force: true)
-    {:noreply, assign(socket, kitchen: kitchen)}
+    {:noreply, assign(socket, kitchen: force_preload(socket.assigns.kitchen, true))}
   end
+
+  defp force_preload(kitchen, force?) do
+    preloads = [
+      menu: [
+        categories: {order_by_inserted_at(MenuCategory), [items: order_by_inserted_at(MenuItem)]}
+      ]
+    ]
+
+    Repo.preload(kitchen, preloads, force: force?)
+  end
+
+  defp order_by_inserted_at(query), do: order_by(query, desc: :inserted_at)
 end
