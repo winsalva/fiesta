@@ -34,7 +34,7 @@ Hooks.MaskPrice = {
 Hooks.HideFormOnSubmit = {
   mounted() {
     this.handleEvent("hide_form", ({ form: form }) => {
-      let event = new CustomEvent("close-form", { detail: { form: form } });
+      let event = new CustomEvent(`close-${form}-form`, { bubbles: true, detail: { form: form } });
       this.el.dispatchEvent(event);
     });
   }

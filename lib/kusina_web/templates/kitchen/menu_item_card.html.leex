@@ -7,7 +7,7 @@
       </div>
       <div class="grid grid-flow-row row-start-2 col-span-2">
         <div>Price</div>
-        <div><%= @menu_item.price %></div>
+        <div><%= Money.to_string(@menu_item.price) %></div>
       </div>
       <div class="grid grid-flow-row row-start-1 row-end-2 col-start-3 col-end-4">
         <div>Description</div>
@@ -35,9 +35,9 @@
         <%= error_tag f, :name %>
       </div>
       <div class="grid grid-flow-row col-span-2">
-        <%= label f, :price %>
-        <%= number_input f, :price, class: "border border-gray-300", step: "0.01", type: "text" %>
-        <%= error_tag f, :price %>
+        <%= label f, :price_input %>
+        <%= number_input f, :price_input, class: "border border-gray-300", step: "0.01", type: "text" %>
+        <%= error_tag f, :price_input %>
       </div>
       <div class="grid grid-flow-row col-span-2 row-span-2">
         <%= label f, :description %>

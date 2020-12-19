@@ -33,7 +33,7 @@ defmodule KusinaWeb.KitchenLive.Component.MenuCategoryCard do
     case Kitchens.create_menu_category(params) do
       {:ok, _menu_category} ->
         send(self(), :refresh)
-        {:noreply, push_event(socket, "hide_form", %{form: "menu_category_form"})}
+        {:noreply, push_event(socket, "hide_form", %{form: "menu-category"})}
 
       _ ->
         {:noreply, socket}

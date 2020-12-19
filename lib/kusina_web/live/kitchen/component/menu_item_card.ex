@@ -28,7 +28,7 @@ defmodule KusinaWeb.KitchenLive.Component.MenuItemCard do
     case Kitchens.create_menu_item(params) do
       {:ok, _menu_item} ->
         send(self(), :refresh)
-        {:noreply, socket}
+        {:noreply, push_event(socket, "hide_form", %{form: "menu-item"})}
 
       {:error, changeset} ->
         {:noreply, assign(socket, changeset: changeset)}

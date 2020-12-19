@@ -1,4 +1,4 @@
-<div class="grid md:m-6 bg-white">
+<div class="grid md:m-6 bg-white" id="menu" phx-hook="HideFormOnSubmit">
   <div class="p-3 md:p-6 grid gap-4">
     <%= for %{id: id} = menu_category <- @kitchen.menu.categories do %>
       <%= live_component @socket, MenuCategoryCard,
@@ -12,9 +12,8 @@
 
   <div class="flex flex-col items-end"
     x-data="{ open: false }"
-    x-on:close-form="if($event.detail.form == 'menu_category_form') { open = false; }"
-    id="menu_category_form_container"
-    phx-hook="HideFormOnSubmit">
+    x-on:close-menu-category-form.window="open = false"
+    id="menu_category_form_container">
 
     <div x-show="open" x-on:click.away="open = false">
       <%= live_component @socket, MenuCategoryCard,
