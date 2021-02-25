@@ -44,11 +44,9 @@ defmodule FiestaWeb.Router do
     pipe_through [:browser, :protected]
 
     resources "/dashboard", DashboardController, only: [:index]
-    resources "/lobby", LobbyController, only: [:index]
     delete "/logout", Users.SessionController, :delete, as: :logout
 
     live "/kitchen", KitchenLive.Index, layout: {FiestaWeb.LayoutView, "app.html"}
-    live "/chat/:id", ChatLive, layout: {FiestaWeb.LayoutView, "app.html"}
   end
 
   # Other scopes may use custom stacks.
