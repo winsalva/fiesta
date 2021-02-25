@@ -1,4 +1,4 @@
-defmodule Kusina.Repo.Migrations.CreateKitchens do
+defmodule Fiesta.Repo.Migrations.CreateKitchens do
   use Ecto.Migration
 
   def change do

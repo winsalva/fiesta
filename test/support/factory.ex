@@ -1,6 +1,6 @@
-defmodule Kusina.Factory do
+defmodule Fiesta.Factory do
   @moduledoc false
-  use ExMachina.Ecto, repo: Kusina.Repo
-  use Kusina.KitchenFactory
-  use Kusina.UserFactory
+  use ExMachina.Ecto, repo: Fiesta.Repo
+  use Fiesta.KitchenFactory
+  use Fiesta.UserFactory
 end

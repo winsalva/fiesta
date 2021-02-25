@@ -1,4 +1,4 @@
-# Kusina
+# Fiesta
 
 To start your Phoenix server:
 

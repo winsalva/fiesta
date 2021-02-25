@@ -1,10 +1,10 @@
-defmodule Kusina.KitchenFactory do
+defmodule Fiesta.KitchenFactory do
   @moduledoc false
 
   defmacro __using__(_opts) do
     quote do
       def kitchen_factory do
-        %Kusina.Kitchens.Kitchen{
+        %Fiesta.Kitchens.Kitchen{
           name: Faker.Pizza.company(),
           description: Faker.Lorem.sentence(),
           owner: build(:user)

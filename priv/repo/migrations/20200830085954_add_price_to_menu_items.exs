@@ -1,4 +1,4 @@
-defmodule Kusina.Repo.Migrations.AddPriceToMenuItems do
+defmodule Fiesta.Repo.Migrations.AddPriceToMenuItems do
   use Ecto.Migration
 
   def change do

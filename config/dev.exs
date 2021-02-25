@@ -1,10 +1,10 @@
 use Mix.Config
 
 # Configure your database
-config :kusina, Kusina.Repo,
+config :fiesta, Fiesta.Repo,
   username: "postgres",
   password: "postgres",
-  database: "kusina_dev",
+  database: "fiesta_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
@@ -15,7 +15,7 @@ config :kusina, Kusina.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :kusina, KusinaWeb.Endpoint,
+config :fiesta, FiestaWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -55,13 +55,13 @@ config :kusina, KusinaWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :kusina, KusinaWeb.Endpoint,
+config :fiesta, FiestaWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/kusina_web/(live|views)/.*(ex)$",
-      ~r"lib/kusina_web/templates/.*(eex)$"
+      ~r"lib/fiesta_web/(live|views)/.*(ex)$",
+      ~r"lib/fiesta_web/templates/.*(eex)$"
     ]
   ]
 

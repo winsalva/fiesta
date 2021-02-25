@@ -1,4 +1,4 @@
-defmodule Kusina.Repo.Migrations.CreateUsers do
+defmodule Fiesta.Repo.Migrations.CreateUsers do
   use Ecto.Migration
 
   def change do

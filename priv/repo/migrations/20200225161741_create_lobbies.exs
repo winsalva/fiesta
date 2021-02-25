@@ -1,4 +1,4 @@
-defmodule Kusina.Repo.Migrations.CreateLobbies do
+defmodule Fiesta.Repo.Migrations.CreateLobbies do
   use Ecto.Migration
 
   def change do
