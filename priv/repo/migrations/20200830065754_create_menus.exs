@@ -1,4 +1,4 @@
-defmodule Kusina.Repo.Migrations.CreateMenus do
+defmodule Fiesta.Repo.Migrations.CreateMenus do
   use Ecto.Migration
 
   def change do

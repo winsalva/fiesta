@@ -1,4 +1,4 @@
-defmodule Kusina.TestHelpers do
+defmodule Fiesta.TestHelpers do
   @moduledoc false
 
   alias Faker.Util

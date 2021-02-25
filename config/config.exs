@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :kusina,
-  ecto_repos: [Kusina.Repo]
+config :fiesta,
+  ecto_repos: [Fiesta.Repo]
 
 # Configures the endpoint
-config :kusina, KusinaWeb.Endpoint,
+config :fiesta, FiestaWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "+HABISq4c08qqnlajk+r06mqmaGyNXahfsjKuLWkCOwr7hKQWiQOiUUVNoyB/PaU",
-  render_errors: [view: KusinaWeb.ErrorView, accepts: ~w(html json)],
-  pubsub_server: Kusina.PubSub,
+  render_errors: [view: FiestaWeb.ErrorView, accepts: ~w(html json)],
+  pubsub_server: Fiesta.PubSub,
   live_view: [signing_salt: "bsouhlAvbufXCfE4oBf0i8dgj4IOjHrv"]
 
 # Configures Elixir's Logger
@@ -27,10 +27,10 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 # Configures authentication via Pow library
-config :kusina, :pow,
-  user: Kusina.Users.User,
-  repo: Kusina.Repo,
-  users_context: Kusina.Users
+config :fiesta, :pow,
+  user: Fiesta.Users.User,
+  repo: Fiesta.Repo,
+  users_context: Fiesta.Users
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

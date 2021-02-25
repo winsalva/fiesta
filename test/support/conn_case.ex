@@ -1,4 +1,4 @@
-defmodule KusinaWeb.ConnCase do
+defmodule FiestaWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule KusinaWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use KusinaWeb.ConnCase, async: true`, although
+  by setting `use FiestaWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -23,18 +23,18 @@ defmodule KusinaWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       import Phoenix.ConnTest
-      alias KusinaWeb.Router.Helpers, as: Routes
+      alias FiestaWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint KusinaWeb.Endpoint
+      @endpoint FiestaWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Sandbox.checkout(Kusina.Repo)
+    :ok = Sandbox.checkout(Fiesta.Repo)
 
     unless tags[:async] do
-      Sandbox.mode(Kusina.Repo, {:shared, self()})
+      Sandbox.mode(Fiesta.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

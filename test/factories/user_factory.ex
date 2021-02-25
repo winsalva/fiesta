@@ -1,11 +1,11 @@
-defmodule Kusina.UserFactory do
+defmodule Fiesta.UserFactory do
   @moduledoc false
-  import Kusina.TestHelpers
+  import Fiesta.TestHelpers
 
   defmacro __using__(_opts) do
     quote do
       def user_factory do
-        %Kusina.Users.User{
+        %Fiesta.Users.User{
           email: Faker.Internet.email(),
           password: random_letters(10)
         }

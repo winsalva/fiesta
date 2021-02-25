@@ -1,4 +1,4 @@
-defmodule Kusina.Repo.Migrations.CreateMoneyWithCurrencyCustomType do
+defmodule Fiesta.Repo.Migrations.CreateMoneyWithCurrencyCustomType do
   use Ecto.Migration
 
   def up do

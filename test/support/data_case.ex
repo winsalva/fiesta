@@ -1,4 +1,4 @@
-defmodule Kusina.DataCase do
+defmodule Fiesta.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule Kusina.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use Kusina.DataCase, async: true`, although
+  by setting `use Fiesta.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -20,21 +20,21 @@ defmodule Kusina.DataCase do
 
   using do
     quote do
-      alias Kusina.Repo
+      alias Fiesta.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Kusina.DataCase
-      import Kusina.Factory
+      import Fiesta.DataCase
+      import Fiesta.Factory
     end
   end
 
   setup tags do
-    :ok = Sandbox.checkout(Kusina.Repo)
+    :ok = Sandbox.checkout(Fiesta.Repo)
 
     unless tags[:async] do
-      Sandbox.mode(Kusina.Repo, {:shared, self()})
+      Sandbox.mode(Fiesta.Repo, {:shared, self()})
     end
 
     :ok

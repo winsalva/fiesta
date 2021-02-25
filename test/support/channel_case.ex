@@ -1,4 +1,4 @@
-defmodule KusinaWeb.ChannelCase do
+defmodule FiestaWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule KusinaWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use KusinaWeb.ChannelCase, async: true`, although
+  by setting `use FiestaWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -25,15 +25,15 @@ defmodule KusinaWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint KusinaWeb.Endpoint
+      @endpoint FiestaWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Sandbox.checkout(Kusina.Repo)
+    :ok = Sandbox.checkout(Fiesta.Repo)
 
     unless tags[:async] do
-      Sandbox.mode(Kusina.Repo, {:shared, self()})
+      Sandbox.mode(Fiesta.Repo, {:shared, self()})
     end
 
     :ok
