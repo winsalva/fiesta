@@ -1,0 +1,11 @@
+.text-input {
+  @apply border rounded-sm border-gray-400;
+}
+
+.text-input:focus {
+  @apply outline-none border-gray-600;
+}
+
+.text-input-md {
+  @apply p-2;
+}

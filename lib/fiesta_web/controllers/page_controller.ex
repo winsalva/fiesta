@@ -1,9 +1,10 @@
 defmodule FiestaWeb.PageController do
   use FiestaWeb, :controller
 
-  plug(:put_layout, "landing_page.html" when action in [:index])
+  alias Fiesta.Users.User
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    changeset = User.changeset(%User{}, %{})
+    render(conn, "index.html", changeset: changeset)
   end
 end

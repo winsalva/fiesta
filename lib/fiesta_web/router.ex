@@ -13,6 +13,8 @@ defmodule FiestaWeb.Router do
   pipeline :not_authenticated do
     plug Pow.Plug.RequireNotAuthenticated,
       error_handler: FiestaWeb.FallbackController
+
+    plug(:put_layout, {FiestaWeb.LayoutView, "landing_page.html"})
   end
 
   pipeline :browser do
@@ -28,7 +30,7 @@ defmodule FiestaWeb.Router do
   end
 
   scope "/", FiestaWeb do
-    pipe_through :browser
+    pipe_through [:browser, :not_authenticated]
 
     resources "/", PageController, only: [:index]
   end

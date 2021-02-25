@@ -1,21 +1,24 @@
 defmodule FiestaWeb.Users.RegistrationController do
   use FiestaWeb, :controller
 
+  alias FiestaWeb.PageView
+  alias Pow.Plug, as: PowPlug
+
   action_fallback(FiestaWeb.FallbackController)
 
   def create(conn, %{"user" => user_params}) do
     conn
-    |> Pow.Plug.create_user(user_params)
+    |> PowPlug.create_user(user_params)
     |> case do
-      {:ok, _user, conn} ->
+      {:ok, _, conn} ->
         conn
         |> put_flash(:info, "Welcome!")
         |> redirect(to: Routes.dashboard_path(conn, :index))
 
-      {:error, _changeset, conn} ->
+      {:error, changeset, conn} ->
         conn
-        |> put_flash(:error, "Error signing up. Please try again later.")
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> put_view(PageView)
+        |> render(:index, changeset: changeset)
     end
   end
 end

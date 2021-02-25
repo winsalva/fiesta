@@ -10,13 +10,13 @@ defmodule Fiesta.Kitchens.Kitchen do
 
     has_one(:menu, Fiesta.Products.Menu)
 
-    belongs_to(:owner, Fiesta.Users.User)
+    belongs_to(:owner, Fiesta.Users.User, foreign_key: :owner_id)
 
     timestamps()
   end
 
-  @required [:name, :owner_id]
-  @attrs @required ++ [:description]
+  @required [:name]
+  @attrs @required ++ [:description, :owner_id]
 
   def changeset(kitchen_or_changeset, attrs \\ %{}) do
     kitchen_or_changeset
