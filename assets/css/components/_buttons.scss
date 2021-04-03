@@ -28,3 +28,7 @@
 .btn-outline-gray:hover {
   @apply bg-black text-white;
 }
+
+.btn-secondary {
+  @apply bg-secondary text-white;
+}

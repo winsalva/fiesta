@@ -1,32 +1,35 @@
 <%= form_for @changeset, Routes.signup_path(@conn, :create), [as: :user, class: "grid grid-flow-row gap-4"], fn f -> %>
   <%= inputs_for f, :kitchen, fn k -> %>
     <div class="flex flex-col">
-      <%= text_input k, :name, placeholder: "Restaurant name", class: "text-input text-input-md" %>
+      <%= text_input k, :name, placeholder: "Restaurant name", class: "p-2" %>
       <%= error_tag k, :name %>
     </div>
 
     <div class="flex flex-col">
-      <%= text_input k, :description, placeholder: "Restaurant description", class: "text-input text-input-md" %>
+      <%= text_input k, :description, placeholder: "Restaurant description", class: "p-2" %>
       <%= error_tag k, :description %>
     </div>
   <% end %>
 
   <div class="flex flex-col">
-    <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), placeholder: "Email", class: "text-input text-input-md" %>
+    <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), placeholder: "Email", class: "p-2" %>
     <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
   </div>
 
   <div class="flex flex-col">
-    <%= password_input f, :password, placeholder: "Password", class: "text-input text-input-md"  %>
+    <%= password_input f, :password, placeholder: "Password", class: "p-2"  %>
     <%= error_tag f, :password %>
   </div>
 
   <div class="flex flex-col">
-    <%= password_input f, :password_confirmation, placeholder: "Password confirmation", class: "text-input text-input-md" %>
+    <%= password_input f, :password_confirmation, placeholder: "Password confirmation", class: "p-2" %>
     <%= error_tag f, :password_confirmation %>
   </div>
 
-  <div class="flex flex-col items-stretch">
-    <%= submit "Register", class: "btn btn-gray", phx_disable_with: "Registering..." %>
+  <div class="flex flex-col items-stretch uppercase">
+    <%= submit class: "btn btn-secondary flex justify-between" do %>
+      <span class="uppercase"> Register </span>
+      <i data-feather="arrow-right"></i>
+    <% end %>
   </div>
 <% end %>

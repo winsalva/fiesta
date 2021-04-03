@@ -1,60 +1,17 @@
-<div class="flex flex-col">
-  <div class="flex w-full flex-col-reverse md:flex-row">
-    <div class="w-full md:w-3/5 py-4 md:py-0 px-6 lg:px-12 flex flex-col justify-center bg-gray-100">
-      <div class="text-3xl lg:text-5xl font-bold">Welcome restaurateurs!</div>
-      <p class="text-lg leading-relaxed py-3 lg:py-5 text-justify">
-      Who are we, you might ask. Fiesta is a Filipino word that means banquet. We support restaurateurs from local food sellers,
-      home chefs, to established restaurants. Fiesta.io is a menu builder application. Once you create your menu you can share it
+<div class="flex flex-col bg-gray-100">
+  <div class="flex w-full flex-col md:flex-row">
+    <div class="w-full lg:w-3/5 py-4 md:py-0 px-6 lg:px-12 flex flex-col justify-center bg-gray-100">
+      <div class="text-4xl lg:text-7xl font-bold">Welcome restaurateurs!</div>
+      <p class="text-2xl leading-relaxed py-3 lg:py-5 text-justify">
+      Fiesta.io is a menu builder application. Once you create your menu you can share it
       to your customers where they can also order it through a link.
       </p>
     </div>
-    <div class="w-full md:w-2/5 hidden md:block md:p-10">
+    <div class="w-full lg:w-2/5 md:p-10">
       <div class="grid grid-flow-row border-t-8 border-gray-900 bg-white h-full p-8 gap-4">
         <div class="text-xl">Get started by registering below</div>
         <%= render RegistrationView, "new.html", conn: @conn, changeset: @changeset %>
       </div>
     </div>
   </div>
-  <div class="flex flex-col md:flex-row items-center">
-    <div class="w-full md:w-1/3 h-64 bg-tertiary text-center py-5 text-5xl font-semibold uppercase px-3 flex flex-col justify-center">
-      How it works
-    </div>
-    <div class="w-full md:w-1/3 h-64 bg-secondary py-5 px-4 flex flex-col justify-start">
-      <div class="text-xl uppercase py-2 border-b border-white border-b-2 font-bold">Step 1</div>
-      <div class="text-4xl font-semibold uppercase">Register</div>
-    </div>
-    <div class="w-full md:w-1/3 h-64 bg-quaternary py-5 px-4 flex flex-col justify-start">
-      <div class="text-xl uppercase py-2 border-b border-white border-b-2 font-bold">Step 2</div>
-      <div class="text-4xl font-semibold uppercase">Create your menu</div>
-    </div>
-  </div>
-  <div class="flex flex-col md:flex-row items-center">
-    <div class="w-full md:w-1/3 h-64 text-center py-5 px-3 flex flex-col justify-center plans relative">
-      <div class="bg-opacity-50 absolute w-full h-full inset-0 z-1 bg-secondary"></div>
-      <div class="text-5xl font-semibold uppercase z-2">...</div>
-    </div>
-    <div class="w-full md:w-1/3 h-64 py-5 px-4 flex flex-col justify-start text-black bg-tertiary">
-      <div class="text-xl uppercase py-2 border-b border-white border-b-2 font-bold z-2">Step 3</div>
-      <div class="text-4xl font-semibold uppercase z-2">Publish</div>
-    </div>
-    <div class="w-full md:w-1/3 h-64 bg-quaternary py-5 px-4 flex flex-col justify-start premium-plan text-white relative">
-      <div class="bg-opacity-50 absolute w-full h-full inset-0 z-1 bg-black"></div>
-      <div class="text-xl uppercase py-2 border-b border-white border-b-2 font-bold z-2">Step 4</div>
-      <div class="text-4xl font-semibold uppercase z-2">Share your link to your customers</div>
-    </div>
-  </div>
-  <div class="flex flex-col w-full items-center bg-secondary px-10 md:px-20 py-20">
-    <p class="text-xl font-normal text-center">
-      This web application is inspired by the foodpreneurs struggling in the midst of pandemic.
-      Mabuhay kayo!
-    <p>
-
-    <p class="text-xl font-normal text-center my-5">
-      Feel free to message us for inquiries, reports, and bugs. Your feedback are helpful to us.
-    <p>
-
-    <div class="w-auto border-2 border-black p-3 text-center text-xl font-bold mt-5 hover:text-white hover:bg-black">fiestaio@gmail.com</div>
-  </div>
-  <div class="flex h-16 justify-center items-center text-gray bg-gray-900 text-white py-4">fiesta.io &#169; 2020</div>
-  <div class="flex h-16 justify-center items-center text-gray bg-gray-700">Made with &hearts; by <a href="https://github.com/dgigafox">&nbsp;dgigafox</a> </div>
 </div>

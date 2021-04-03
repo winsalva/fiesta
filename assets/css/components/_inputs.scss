@@ -1,11 +1,9 @@
-.text-input {
-  @apply border rounded-sm border-gray-400;
+input[type='text'],
+input[type='password'] {
+  @apply rounded rounded-sm border border-gray-400;
 }
 
-.text-input:focus {
-  @apply outline-none border-gray-600;
-}
-
-.text-input-md {
-  @apply p-2;
+input[type='text']:focus,
+input[type='password']:focus {
+  @apply outline-none border border-gray-700;
 }

@@ -8,40 +8,39 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <%= csrf_meta_tag() %>
   </head>
-  <body class="flex flex-col md:flex-none bg-gray-100"
+  <body class="flex flex-col md:flex-none bg-gray-100 min-h-screen"
     :class="{ 'overflow-x-hidden overflow-y-hidden': isDialogOpen }"
     x-data="{ 'isDialogOpen': false }"
     @keydown.escape="isDialogOpen = false">
 
-    <header class="shadow-xl">
-      <section class="bg-white py-6">
-        <div class="flex px-12 items-center">
-          <div class="w-1/2">
-            <h3 class="float-left">Fiesta.io</h3>
-          </div>
-          <div class="w-1/2 flex justify-end -mx-2">
-            <%= if current_user(@conn) do %>
-              <%= button "Go to Dashboard", to: Routes.dashboard_path(@conn, :index), method: :get,
-                class: "p-1 md:p-2 border-4 border-black font-semibold hover:text-white hover:bg-black" %>
-            <% else %>
-              <%= button "Sign in", to: "#", class: "btn btn-outline-gray" %>
-            <% end %>
-          </div>
+    <%= render_existing @view_module, "header.html", conn: @conn %>
+
+    <main role="main" class="flex-grow">
+      <%= @inner_content %>
+    </main>
+
+    <footer class="bg-gray-900 text-white p-6 pb-0 flex flex-col divide-y-2 divide-white">
+      <div class="text-2xl p-4">Fiesta</div>
+      <div class="flex flex-col md:flex-row p-4 md:w-full">
+        <div class="flex space-x-2 mb-4 md:w-1/3">
+          <i data-feather="facebook"></i>
+          <i data-feather="twitter"></i>
+          <i data-feather="youtube"></i>
         </div>
-      </section>
-    </header>
-
-    <div class="flex-col md:flex md:flex-row-reverse flex-wrap">
-      <div class="w-full bg-gray-100">
-        <main role="main">
-          <%= @inner_content %>
-        </main>
+        <div class="flex flex-col space-y-4 mb-4 md:w-1/3">
+          <div>Terms of Restaurant</div>
+          <div>Restaurant Privacy</div>
+          <div>Consent Disagree</div>
+          <div>Help</div>
+        </div>
+        <div class="flex flex-col space-y-4 mb-4 md:w-1/3">
+          <div>About Us</div>
+          <div>Trust & Safety</div>
+        </div>
       </div>
-    </div>
-
-    <footer class="bg-gray-900 text-white mx-0 md:mx-5 py-4 px-2 grid grid-flow-row grid-cols-1">
-      <div class="text-2xl">Fiesta</div>
-
+      <div class="flex justify-center p-4 text-sm">
+        &copy; 2021 SoftWLabs Inc.
+      </div>
     </footer>
 
     <%= render CommonView, "flash_message.html", conn: @conn, class: "fixed p-6 md:p-0 md:top-8 md:right-1/2 z-50 md:transform md:translate-x-1/2" %>

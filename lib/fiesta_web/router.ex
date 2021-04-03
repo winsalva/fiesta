@@ -39,7 +39,7 @@ defmodule FiestaWeb.Router do
     pipe_through [:browser, :not_authenticated]
 
     post "/signup", Users.RegistrationController, :create, as: :signup
-    post "/login", Users.SessionController, :create, as: :login
+    resources "/login", Users.SessionController, as: :login, only: [:new, :create]
   end
 
   scope "/", FiestaWeb do

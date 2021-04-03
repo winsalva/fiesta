@@ -1,32 +1,37 @@
-<%= form_for @changeset, @form_action, [as: :user, class: "p-6", phx_submit: :submit_login_form, phx_trigger_action: @trigger_submit], fn f -> %>
-  <%= if @changeset.action do %>
-    <%= case @changeset.errors do %>
-      <% [] -> %>
-        <div class="alert alert-danger">
-          <p>It seems we cannot find that user.</p>
-        </div>
-      <% _ -> %>
-        <div class="alert alert-danger">
-          <p>Oops, something went wrong! Please check the errors below.</p>
-        </div>
-    <% end %>
+<div class="w-full flex px-6 py-28 items-stretch justify-center bg-white">
+  <%= form_for @changeset, Routes.login_path(@conn, :create), [as: :user, class: "flex flex-col space-y-8 w-full md:w-1/3"], fn f -> %>
+    <%= img_tag Routes.static_path(@conn, "/images/logo.png"), class: "w-52 self-center" %>
+
+    <div class="flex flex-col space-y-4">
+      <%= if @changeset.action do %>
+        <%= case @changeset.errors do %>
+          <% [] -> %>
+            <div class="alert alert-danger">
+              <p>It seems we cannot find that user.</p>
+            </div>
+          <% _ -> %>
+            <div class="alert alert-danger">
+              <p>Oops, something went wrong! Please check the errors below.</p>
+            </div>
+        <% end %>
+      <% end %>
+
+      <div class="flex flex-col">
+        <%= label f, Pow.Ecto.Schema.user_id_field(@changeset), "Enter your email", class: "text-sm" %>
+        <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), class: "p-2" %>
+        <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
+      </div>
+
+      <div class="flex flex-col">
+        <%= label f, :password, class: "text-sm" %>
+        <%= password_input f, :password, class: "p-2" %>
+        <%= error_tag f, :password %>
+      </div>
+
+      <%= submit class: "btn btn-secondary flex justify-between" do %>
+        <span class="uppercase"> Sign in </span>
+        <i data-feather="arrow-right"></i>
+      <% end %>
+    </div>
   <% end %>
-
-  <div class="flex flex-col -my-4">
-    <div class="flex flex-col py-4">
-      <%= label f, Pow.Ecto.Schema.user_id_field(@changeset), class: "text-sm" %>
-      <%= text_input f, Pow.Ecto.Schema.user_id_field(@changeset), class: "border-b-2 border-secondary focus:outline-none focus:border-black" %>
-      <%= error_tag f, Pow.Ecto.Schema.user_id_field(@changeset) %>
-    </div>
-
-    <div class="flex flex-col py-4">
-      <%= label f, :password, class: "text-sm" %>
-      <%= password_input f, :password, class: "border-b-2 border-secondary focus:outline-none focus:border-black" %>
-      <%= error_tag f, :password %>
-    </div>
-  </div>
-
-  <div class="flex justify-end mt-4">
-    <%= submit "Sign in", class: "btn btn-outline-black hover:text-white hover:bg-black", phx_disable_with: "Logging in..." %>
-  </div>
-<% end %>
+</div>

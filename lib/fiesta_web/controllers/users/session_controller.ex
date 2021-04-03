@@ -1,7 +1,17 @@
 defmodule FiestaWeb.Users.SessionController do
   use FiestaWeb, :controller
+  alias Fiesta.Users.User
+  alias FiestaWeb.Pow.SessionView
 
   action_fallback(FiestaWeb.FallbackController)
+
+  def new(conn, _) do
+    changeset = User.changeset(%User{}, %{})
+
+    conn
+    |> put_view(SessionView)
+    |> render("new.html", changeset: changeset)
+  end
 
   def create(conn, %{"user" => user_params}) do
     conn
@@ -15,7 +25,8 @@ defmodule FiestaWeb.Users.SessionController do
       {:error, conn} ->
         conn
         |> put_flash(:info, "Invalid email or password")
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> put_view(SessionView)
+        |> render("new.html", changeset: Pow.Plug.change_user(conn, user_params))
     end
   end
 

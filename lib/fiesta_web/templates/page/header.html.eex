@@ -1,0 +1,9 @@
+<header class="shadow-xl py-6 flex px-12 items-center justify-between">
+  <%= img_tag Routes.static_path(@conn, "/images/logo.png"), class: "w-52" %>
+  <%= if current_user(@conn) do %>
+    <%= button "Go to Dashboard", to: Routes.dashboard_path(@conn, :index), method: :get,
+      class: "p-1 md:p-2 border-4 border-black font-semibold hover:text-white hover:bg-black" %>
+  <% else %>
+    <%= button "Sign in", to: Routes.login_path(@conn, :new), method: :get, class: "btn btn-outline-gray" %>
+  <% end %>
+</header>
