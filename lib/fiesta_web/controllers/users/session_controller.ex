@@ -24,7 +24,8 @@ defmodule FiestaWeb.Users.SessionController do
 
       {:error, conn} ->
         conn
-        |> put_flash(:info, "Invalid email or password")
+        |> put_status(422)
+        |> put_flash(:error, "Invalid email or password")
         |> put_view(SessionView)
         |> render("new.html", changeset: Pow.Plug.change_user(conn, user_params))
     end

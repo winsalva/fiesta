@@ -16,12 +16,16 @@ defmodule FiestaWeb.ConnCase do
   """
 
   use ExUnit.CaseTemplate
-
+  import Fiesta.Factory
+  import Phoenix.ConnTest
   alias Ecto.Adapters.SQL.Sandbox
+  alias Pow.Plug, as: PowPlug
 
   using do
     quote do
       # Import conveniences for testing with connections
+      import Fiesta.Factory
+      import FiestaWeb.ConnCase
       import Phoenix.ConnTest
       alias FiestaWeb.Router.Helpers, as: Routes
 
@@ -38,5 +42,16 @@ defmodule FiestaWeb.ConnCase do
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
+  end
+
+  def login(conn), do: do_login(conn, insert(:user))
+
+  def login(conn, user), do: do_login(conn, user)
+
+  defp do_login(conn, user) do
+    conn
+    |> bypass_through(FiestaWeb.Router, [:browser, :not_authenticated])
+    |> dispatch(FiestaWeb.Endpoint, :get, "/")
+    |> PowPlug.create(user)
   end
 end

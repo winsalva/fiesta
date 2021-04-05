@@ -17,6 +17,7 @@ defmodule FiestaWeb.Users.RegistrationController do
 
       {:error, changeset, conn} ->
         conn
+        |> put_status(422)
         |> put_view(PageView)
         |> render(:index, changeset: changeset)
     end
