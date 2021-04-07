@@ -5,12 +5,10 @@ defmodule Fiesta.KitchensTest do
 
   describe "create_kitchen/1" do
     setup do
-      {:ok, params: params_for(:kitchen)}
+      {:ok, params: params_with_assocs(:kitchen, owner: insert(:user, kitchen: nil))}
     end
 
     test "creates a kitchen", %{params: params} do
-      owner = insert(:user)
-      params = Map.put(params, :owner_id, owner.id)
       {:ok, kitchen} = Kitchens.create_kitchen(params)
 
       assert kitchen.id

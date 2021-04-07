@@ -9,6 +9,11 @@ module.exports = {
     "./js/**/*.js"
   ],
   theme: {
+    backgroundColor: theme => ({
+      ...theme("colors"),
+      primary: "#E66D15",
+      secondary: "#43A422",
+    }),
     extend: {
       width: {
         '1/20': `${baseWidth * 1}%`,
@@ -33,16 +38,10 @@ module.exports = {
       },
       colors: {
         primary: {
-          default: "#000000"
+          default: "#E66D15"
         },
         secondary: {
-          default: "#EBE9E6"
-        },
-        tertiary: {
-          default: "#D5DDDB"
-        },
-        quaternary: {
-          default: "#DCE4E7"
+          default: "#43A422"
         }
       },
       zIndex: {
