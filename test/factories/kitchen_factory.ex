@@ -6,8 +6,7 @@ defmodule Fiesta.KitchenFactory do
       def kitchen_factory do
         %Fiesta.Kitchens.Kitchen{
           name: Faker.Pizza.company(),
-          description: Faker.Lorem.sentence(),
-          owner: build(:user)
+          description: Faker.Lorem.sentence()
         }
       end
     end

@@ -6,13 +6,7 @@ defmodule Fiesta.Kitchens.KitchenTest do
 
   describe "changeset/2" do
     setup do
-      owner = insert(:user)
-
-      params =
-        :kitchen
-        |> params_for()
-        |> Map.take([:name, :description])
-        |> Map.put(:owner_id, owner.id)
+      params = params_with_assocs(:kitchen, owner: insert(:user, kitchen: nil))
 
       {:ok, params: params}
     end

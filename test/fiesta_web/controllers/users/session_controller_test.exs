@@ -12,9 +12,9 @@ defmodule FiestaWeb.Users.SessionControllerTest do
 
   describe "create/2" do
     setup do
-      params = params_for(:user)
+      user = insert(:user)
 
-      {:ok, params: params}
+      {:ok, params: %{email: user.email, password: user.password}}
     end
 
     test "redirects to dashboard if successful", %{conn: conn, params: params} do
