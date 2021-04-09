@@ -5,11 +5,15 @@ defmodule Fiesta.Products.Menu do
   import Ecto.Changeset
 
   schema "menus" do
+    field(:name, :string)
+
     has_many(:categories, Fiesta.Products.MenuCategory)
     belongs_to(:kitchen, Fiesta.Kitchens.Kitchen)
+
+    timestamps()
   end
 
-  @required [:kitchen_id]
+  @required [:kitchen_id, :name]
   @attrs @required
 
   def changeset(model_or_changeset, attrs \\ %{}) do

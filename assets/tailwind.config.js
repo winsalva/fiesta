@@ -14,6 +14,11 @@ module.exports = {
       primary: "#E66D15",
       secondary: "#43A422",
     }),
+    textColor: theme => ({
+      ...theme("colors"),
+      primary: "#E66D15",
+      secondary: "#43A422",
+    }),
     extend: {
       width: {
         '1/20': `${baseWidth * 1}%`,

@@ -7,18 +7,8 @@
     </div>
 
     <ul class="h-full justify-around w-full md:w-auto md:h-auto flex md:flex-col md:justify-start md:text-left py-1 md:py-0">
-      <li class="w-auto md:w-full mx-auto md:px-3 mb-4">
-        <a href="<%= Routes.dashboard_path(@conn, :index) %>" class="flex flex-col md:flex-row items-center md:justify-start">
-          <i class="fas fa-chart-line text-2xl md:text-base md:mr-2"></i>
-          <span class="text-xs md:text-base">Dashboard</span>
-        </a>
-      </li>
-      <li class="w-auto md:w-full mx-auto md:px-3 mb-4">
-        <a href="<%= Routes.live_path(@conn, FiestaWeb.KitchenLive.Index) %>" class="flex flex-col md:flex-row items-center md:justify-start">
-          <i class="fas fa-store text-2xl md:text-base md:mr-2"></i>
-          <span class="text-xs md:text-base">My Kitchen</span>
-        </a>
-      </li>
+      <%= menu_item "Dashboard", "monitor", Routes.dashboard_path(@conn, :index) %>
+      <%= menu_item "Menu builder", "book-open", Routes.menu_path(@conn, :edit) %>
     </ul>
   </div>
 

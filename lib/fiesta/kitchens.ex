@@ -16,6 +16,10 @@ defmodule Fiesta.Kitchens do
 
   def get_kitchen(id), do: Repo.get(Kitchen, id)
 
+  def get_kitchen_by(clause) do
+    Repo.get_by(Kitchen, clause)
+  end
+
   def update_kitchen(kitchen, params) do
     kitchen
     |> Kitchen.changeset(params)

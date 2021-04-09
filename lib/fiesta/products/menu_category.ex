@@ -9,7 +9,6 @@ defmodule Fiesta.Products.MenuCategory do
     field(:delete, :boolean, virtual: true)
 
     belongs_to(:menu, Fiesta.Products.Menu)
-
     has_many(:items, Fiesta.Products.MenuItem)
   end
 

@@ -56,12 +56,15 @@ config :fiesta, FiestaWeb.Endpoint,
 
 # Watch static and templates for browser reloading.
 config :fiesta, FiestaWeb.Endpoint,
+  reloadable_compilers: [:surface],
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/fiesta_web/(live|views)/.*(ex)$",
-      ~r"lib/fiesta_web/templates/.*(eex)$"
+      ~r"lib/fiesta_web/templates/.*(eex)$",
+      ~r"lib/fiesta_web/live/.*(sface)$",
+      ~r"lib/fiesta_web/(live|components)/.*(ex|js)$"
     ]
   ]
 

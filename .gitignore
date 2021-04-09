@@ -39,3 +39,6 @@ npm-debug.log
 # Dialyzer PLT files
 /priv/plts/*.plt
 /priv/plts/*.plt.hash
+
+# Auto generated hooks by surface
+/assets/js/_hooks

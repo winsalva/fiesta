@@ -7,7 +7,7 @@ defmodule FiestaWeb.Router do
       error_handler: FiestaWeb.FallbackController
 
     plug FiestaWeb.Plugs.PutCurrentUserSession
-    plug :put_layout, {FiestaWeb.LayoutView, "app.html"}
+    plug :put_root_layout, {FiestaWeb.LayoutView, "app.html"}
   end
 
   pipeline :not_authenticated do
@@ -48,7 +48,8 @@ defmodule FiestaWeb.Router do
     resources "/dashboard", DashboardController, only: [:index]
     delete "/logout", Users.SessionController, :delete, as: :logout
 
-    live "/kitchen", KitchenLive.Index, layout: {FiestaWeb.LayoutView, "app.html"}
+    live "/kitchen", KitchenLive.Index
+    live "/menu-builder", MenuLive.Edit, :edit, as: :menu
   end
 
   # Other scopes may use custom stacks.
