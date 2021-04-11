@@ -21,9 +21,7 @@ defmodule FiestaWeb.Component.MenuSection do
     <div class="flex flex-col">
       <ul class="border border-gray border-box divide-y divide-gray">
         <li :for={{ menu <- @menus }}>
-          <MenuComponent id={{ menu.id }}>
-            {{ menu.name }}
-          </MenuComponent>
+          <MenuComponent id={{ menu.id }} menu={{ menu }} />
         </li>
       </ul>
 
@@ -64,10 +62,9 @@ defmodule FiestaWeb.Component.MenuSection do
 
     case Products.create_menu(params) do
       {:ok, _menu} ->
-        menus = Products.list_menus(kitchen_id: params["kitchen_id"])
-        changeset = Menu.changeset(%Menu{kitchen_id: params["kitchen_id"]})
+        send_update(__MODULE__, id: "menu-section")
         Modal.close("add-menu")
-        {:noreply, assign(socket, menus: menus, changeset: changeset)}
+        {:noreply, socket}
 
       {:error, changeset} ->
         {:noreply, assign(socket, changeset: changeset)}

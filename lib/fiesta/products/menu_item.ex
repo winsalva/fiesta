@@ -9,7 +9,7 @@ defmodule Fiesta.Products.MenuItem do
     field(:description, :string)
     field(:price, Money.Ecto.Composite.Type)
 
-    belongs_to(:category, Fiesta.Products.MenuCategory)
+    belongs_to(:category, Fiesta.Products.MenuCategory, foreign_key: :menu_category_id)
   end
 
   @required [:name, :menu_category_id]
