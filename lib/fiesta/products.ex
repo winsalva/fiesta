@@ -38,4 +38,16 @@ defmodule Fiesta.Products do
     |> MenuCategory.changeset(params)
     |> Repo.insert()
   end
+
+  def update_menu_category(menu_category, params) do
+    menu_category
+    |> MenuCategory.changeset(params)
+    |> Repo.update()
+  end
+
+  def delete_menu_category(menu_category) do
+    menu_category
+    |> MenuCategory.changeset()
+    |> Repo.delete()
+  end
 end
