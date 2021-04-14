@@ -45,7 +45,7 @@ defmodule FiestaWeb.Router do
   scope "/", FiestaWeb do
     pipe_through [:browser, :protected]
 
-    resources "/dashboard", DashboardController, only: [:index]
+    live "/dashboard", DashboardLive.Index, :index, as: :dashboard
     delete "/logout", Users.SessionController, :delete, as: :logout
 
     live "/kitchen", KitchenLive.Index
