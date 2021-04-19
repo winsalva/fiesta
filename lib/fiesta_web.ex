@@ -101,6 +101,7 @@ defmodule FiestaWeb do
     quote do
       alias Surface.Components.Raw
       import FiestaWeb.ErrorHelpers
+      import FiestaWeb.Helpers.HTML
       import Phoenix.HTML.Form
       alias FiestaWeb.Router.Helpers, as: Routes
     end

@@ -27,6 +27,7 @@ defmodule Fiesta.DataCase do
       import Ecto.Query
       import Fiesta.DataCase
       import Fiesta.Factory
+      import Fiesta.TestHelpers
     end
   end
 

@@ -17,7 +17,7 @@ defmodule FiestaWeb.Component.MenuCategory do
 
   def render(assigns) do
     ~H"""
-    <a href="#" class="p-2 flex" id={{ "menu-category-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_items">
+    <div class="p-2 flex" id={{ "menu-category-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_items">
       <div class="flex-grow truncate">
         {{ @menu_category.name }}
       </div>
@@ -44,7 +44,7 @@ defmodule FiestaWeb.Component.MenuCategory do
           </div>
         </template>
       </Modal>
-    </a>
+    </div>
     """
   end
 

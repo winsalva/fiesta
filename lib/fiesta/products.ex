@@ -57,4 +57,34 @@ defmodule Fiesta.Products do
     |> MenuItem.changeset()
     |> Repo.delete()
   end
+
+  def get_menu_item(id) when is_nil(id) or id == "" do
+    nil
+  end
+
+  def get_menu_item(id) do
+    Repo.get(MenuItem, id)
+  end
+
+  def upsert_menu_item(%{"id" => id} = params) do
+    id
+    |> get_menu_item()
+    |> do_upsert_menu_item(params)
+  end
+
+  def upsert_menu_item(%{id: id} = params) do
+    id
+    |> get_menu_item()
+    |> do_upsert_menu_item(params)
+  end
+
+  defp do_upsert_menu_item(menu_item, params) do
+    menu_item
+    |> case do
+      nil -> %MenuItem{}
+      menu_item -> menu_item
+    end
+    |> MenuItem.changeset(params)
+    |> Repo.insert_or_update()
+  end
 end

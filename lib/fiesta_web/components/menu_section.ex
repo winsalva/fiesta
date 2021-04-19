@@ -18,14 +18,15 @@ defmodule FiestaWeb.Component.MenuSection do
 
   def render(assigns) do
     ~H"""
-    <div class="flex flex-col justify-between">
-      <ul class="border border-gray border-box divide-y divide-gray">
+    <div class="flex-grow flex flex-col">
+      <ul class="border border-gray border-box divide-y divide-gray" :if={{ @menus != [] }}>
         <li :for={{ menu <- @menus }}>
           <MenuComponent id={{ menu.id }} menu={{ menu }} />
         </li>
       </ul>
 
-      <a href="#" :on-click={{ "open_modal", target: "#add-menu" }} class="self-center uppercase text-secondary font-semibold">
+      <a href="#" :on-click={{ "open_modal", target: "#add-menu" }}
+        class="mt-auto self-center uppercase text-secondary font-semibold p-2">
         Add menu
       </a>
 

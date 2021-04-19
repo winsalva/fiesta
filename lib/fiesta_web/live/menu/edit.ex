@@ -5,6 +5,7 @@ defmodule FiestaWeb.MenuLive.Edit do
 
   alias FiestaWeb.Component.MenuSection
   alias FiestaWeb.Component.MenuItemSection
+  alias FiestaWeb.Component.MenuItemForm
   alias Fiesta.Users
   alias Fiesta.Repo
 
@@ -26,7 +27,7 @@ defmodule FiestaWeb.MenuLive.Edit do
 
           <!-- Item description -->
           <div class="flex flex-col w-full lg:w-1/2">
-            Item here
+            <MenuItemForm id="menu-item-form" />
           </div>
         </div>
       </div>
