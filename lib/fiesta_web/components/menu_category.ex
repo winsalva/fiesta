@@ -5,7 +5,7 @@ defmodule FiestaWeb.Component.MenuCategory do
   alias Fiesta.Products
   alias Fiesta.Products.MenuCategory
   alias Fiesta.Repo
-  alias FiestaWeb.Component.Menu
+  alias FiestaWeb.Component.MenuCategorySection
   alias FiestaWeb.Component.Modal
 
   @doc "Menu category changeset"
@@ -54,6 +54,18 @@ defmodule FiestaWeb.Component.MenuCategory do
     {:ok, assign(socket, changeset: changeset)}
   end
 
+  def preload(list_of_assigns) do
+    menu_categories =
+      list_of_assigns
+      |> Enum.map(& &1.menu_category)
+      |> Repo.preload(:menu, force: true)
+
+    Enum.map(list_of_assigns, fn assigns ->
+      preloaded_menu_category = Enum.find(menu_categories, &(&1.id == assigns.id))
+      Map.put(assigns, :menu_category, preloaded_menu_category)
+    end)
+  end
+
   def handle_event("update_menu_category", %{"menu_category" => params}, socket) do
     case Products.update_menu_category(socket.assigns.menu_category, params) do
       {:ok, menu_category} ->
@@ -70,9 +82,9 @@ defmodule FiestaWeb.Component.MenuCategory do
     menu_category = socket.assigns.menu_category
     {:ok, _} = Products.delete_menu_category(menu_category)
 
-    send_update(Menu,
+    send_update(MenuCategorySection,
       id: socket.assigns.menu_category.menu_id,
-      menu: Repo.preload(menu_category, :menu).menu
+      menu: menu_category.menu
     )
 
     {:noreply, socket}
