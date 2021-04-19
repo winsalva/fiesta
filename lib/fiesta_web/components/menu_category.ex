@@ -6,6 +6,7 @@ defmodule FiestaWeb.Component.MenuCategory do
   alias Fiesta.Products.MenuCategory
   alias Fiesta.Repo
   alias FiestaWeb.Component.MenuCategorySection
+  alias FiestaWeb.Component.MenuItemSection
   alias FiestaWeb.Component.Modal
 
   @doc "Menu category changeset"
@@ -16,7 +17,7 @@ defmodule FiestaWeb.Component.MenuCategory do
 
   def render(assigns) do
     ~H"""
-    <div class="p-2 flex" id={{ "menu-category-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} >
+    <a href="#" class="p-2 flex" id={{ "menu-category-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_items">
       <div class="flex-grow truncate">
         {{ @menu_category.name }}
       </div>
@@ -43,7 +44,7 @@ defmodule FiestaWeb.Component.MenuCategory do
           </div>
         </template>
       </Modal>
-    </div>
+    </a>
     """
   end
 
@@ -85,6 +86,15 @@ defmodule FiestaWeb.Component.MenuCategory do
     send_update(MenuCategorySection,
       id: socket.assigns.menu_category.menu_id,
       menu: menu_category.menu
+    )
+
+    {:noreply, socket}
+  end
+
+  def handle_event("show_items", _, socket) do
+    send_update(MenuItemSection,
+      id: "menu-item-section",
+      menu_category: socket.assigns.menu_category
     )
 
     {:noreply, socket}

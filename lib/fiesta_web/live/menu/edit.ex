@@ -4,6 +4,7 @@ defmodule FiestaWeb.MenuLive.Edit do
   import Surface
 
   alias FiestaWeb.Component.MenuSection
+  alias FiestaWeb.Component.MenuItemSection
   alias Fiesta.Users
   alias Fiesta.Repo
 
@@ -20,7 +21,7 @@ defmodule FiestaWeb.MenuLive.Edit do
 
           <!-- Add item -->
           <div class="flex flex-col w-full lg:w-1/4">
-            Item here
+            <MenuItemSection id="menu-item-section" />
           </div>
 
           <!-- Item description -->

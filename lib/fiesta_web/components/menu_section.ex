@@ -18,7 +18,7 @@ defmodule FiestaWeb.Component.MenuSection do
 
   def render(assigns) do
     ~H"""
-    <div class="flex flex-col">
+    <div class="flex flex-col justify-between">
       <ul class="border border-gray border-box divide-y divide-gray">
         <li :for={{ menu <- @menus }}>
           <MenuComponent id={{ menu.id }} menu={{ menu }} />

@@ -6,6 +6,7 @@ defmodule Fiesta.Products do
   alias Fiesta.Repo
   alias Fiesta.Products.Menu
   alias Fiesta.Products.MenuCategory
+  alias Fiesta.Products.MenuItem
 
   def list_menus(params) do
     params = Enum.to_list(params)
@@ -48,6 +49,12 @@ defmodule Fiesta.Products do
   def delete_menu_category(menu_category) do
     menu_category
     |> MenuCategory.changeset()
+    |> Repo.delete()
+  end
+
+  def delete_menu_item(menu_item) do
+    menu_item
+    |> MenuItem.changeset()
     |> Repo.delete()
   end
 end
