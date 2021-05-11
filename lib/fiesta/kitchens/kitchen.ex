@@ -8,7 +8,7 @@ defmodule Fiesta.Kitchens.Kitchen do
     field(:name, :string)
     field(:description, :string)
 
-    has_many(:menu, Fiesta.Products.Menu)
+    has_many(:menus, Fiesta.Products.Menu)
     belongs_to(:owner, Fiesta.Users.User, foreign_key: :owner_id)
 
     timestamps()
@@ -23,6 +23,6 @@ defmodule Fiesta.Kitchens.Kitchen do
     |> validate_required(@required)
     |> assoc_constraint(:owner)
     |> unique_constraint(:owner_id, name: :kitchens_owner_id_index)
-    |> cast_assoc(:menu)
+    |> cast_assoc(:menus)
   end
 end
