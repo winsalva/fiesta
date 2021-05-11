@@ -57,7 +57,8 @@ defmodule Fiesta.MixProject do
       {:money, "~> 1.7"},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.5.0-rc.2", only: [:dev, :test], runtime: false},
-      {:surface, "~> 0.3.0"}
+      {:surface, "~> 0.3.0"},
+      {:ecto, "~> 3.5"}
     ]
   end
 

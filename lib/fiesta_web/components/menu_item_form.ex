@@ -18,7 +18,7 @@ defmodule FiestaWeb.Component.MenuItemForm do
       <div :if={{ @menu_item }}>
         {{ f = form_for @changeset, "#",
           id: @id,
-          class: "border border-gray border-box grid p-7 gap-y-3 text-xs grid-cols-3",
+          class: "border border-gray border-box grid p-7 gap-3 text-xs grid-cols-3",
           phx_submit: "upsert_menu_item",
           phx_target: @myself,
           phx_hook: "FiestaWeb.Component.MenuItemForm#MaskPrice"
@@ -40,6 +40,16 @@ defmodule FiestaWeb.Component.MenuItemForm do
           {{ price_input f, :price, class: "p-2", name: "menu_item[price][amount]" }}
           {{ error_tag f, :price }}
           {{ hidden_input f, :price, name: "menu_item[price][currency]", value: "PHP" }}
+        </div>
+        <div class="flex flex-col space-y-2 col-span-1">
+          {{ label f, :tax, "Tax %" }}
+          {{ text_input f, :tax, class: "p-2 price-input" }}
+          {{ error_tag f, :tax }}
+        </div>
+        <div class="flex flex-col space-y-2 col-span-1">
+          {{ label f, :visibility, "Item visibility" }}
+          {{ select f, :visibility, [:active, :inactive], class: "p-2" }}
+          {{ error_tag f, :visibility }}
         </div>
         <#Raw></form></#Raw>
       </div>
