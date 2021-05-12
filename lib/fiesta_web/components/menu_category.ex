@@ -19,12 +19,12 @@ defmodule FiestaWeb.Component.MenuCategory do
 
   def render(assigns) do
     ~H"""
-    <div class={{ "p-2 flex", "border-l-4 border-primary": @selected }} id={{ "menu-category-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_items">
-      <div class="flex-grow truncate">
+    <div class={{ "flex relative", "border-l-4 border-primary": @selected }} id={{ "menu-category-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }}>
+      <div href="#" class="cursor-pointer p-2 flex-grow truncate" :on-click="show_items">
         {{ @menu_category.name }}
       </div>
 
-      <div class="flex flex-grow-0">
+      <div class="bg-white flex absolute right-0 top-2">
         <a href="#" :on-click={{ "open_modal", target: "#edit-menu-category-#{@id}" }}>
           <i data-feather="edit"></i>
         </a>

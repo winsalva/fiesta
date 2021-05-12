@@ -23,7 +23,7 @@ defmodule FiestaWeb.MenuLive.Edit do
     <div class="p-6 flex flex-col">
       <div class="bg-white rounded-md p-6">
         <div>Craft your menu</div>
-        <div class="flex mt-4 w-full">
+        <div class="flex flex-col lg:flex-row mt-4 w-full">
           <!-- Add menu -->
           <div class="flex flex-col w-full lg:w-1/4">
             <MenuSection id="menu-section" kitchen_id={{ @current_user.kitchen.id }} selected_menu_id={{ @selected_menu_id }} selected_menu_category_id={{ @selected_menu_category_id }} />

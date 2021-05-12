@@ -24,7 +24,7 @@ defmodule FiestaWeb.Component.Menu do
   def render(assigns) do
     ~H"""
     <div class="flex flex-col relative" id={{ "menu-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }}>
-      <a href="#" class="p-2 flex" :on-click="toggle_categories">
+      <div class={{ "cursor-pointer p-2 flex", "bg-gray-200": @collapse }} :on-click="toggle_categories">
         <div class="flex-grow-0" :show={{ !@collapse }}>
           <i data-feather="chevron-right"></i>
         </div>
@@ -36,7 +36,7 @@ defmodule FiestaWeb.Component.Menu do
         <div class="flex-grow truncate">
           {{ @menu.name }}
         </div>
-      </a>
+      </div>
 
       <div class="absolute right-0 top-2">
         <Dropdown>

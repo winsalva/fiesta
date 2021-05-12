@@ -14,11 +14,11 @@ defmodule FiestaWeb.Component.MenuItem do
 
   def render(assigns) do
     ~H"""
-    <div class={{ "flex p-2", "border-l-4 border-primary": @selected }} id={{ "menu-item-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_form">
-      <div class="flex-grow truncate">
+    <div class={{ "flex relative", "border-l-4 border-primary": @selected }} id={{ "menu-item-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_form">
+      <div class="cursor-pointer p-2 flex-grow truncate">
         {{ @menu_item.name }}
       </div>
-      <a href="#" class="justify-self-end flex-grow-0" :on-click="delete_menu_item">
+      <a href="#" class="bg-white absolute right-0 top-2" :on-click="delete_menu_item">
         <i data-feather="trash-2"></i>
       </a>
     </div>
