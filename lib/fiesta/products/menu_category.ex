@@ -9,11 +9,12 @@ defmodule Fiesta.Products.MenuCategory do
     field(:delete, :boolean, virtual: true)
 
     belongs_to(:menu, Fiesta.Products.Menu)
-
     has_many(:items, Fiesta.Products.MenuItem)
+
+    timestamps()
   end
 
-  @required [:menu_id]
+  @required [:menu_id, :name]
   @attrs @required
 
   def changeset(model_or_changeset, attrs \\ %{}) do

@@ -49,6 +49,7 @@ defmodule FiestaWeb do
       import Pow.Plug, only: [current_user: 1]
       alias FiestaWeb.CommonView
       import FiestaWeb.ViewHelpers
+      import Surface
     end
   end
 
@@ -70,8 +71,22 @@ defmodule FiestaWeb do
 
   def live do
     quote do
-      use Phoenix.LiveView
-      alias FiestaWeb.Router.Helpers, as: Routes
+      use Surface.LiveView
+      FiestaWeb.common_liveview_aliases()
+    end
+  end
+
+  def live_component do
+    quote do
+      use Surface.LiveComponent
+      FiestaWeb.common_liveview_aliases()
+    end
+  end
+
+  def component do
+    quote do
+      use Surface.Component
+      FiestaWeb.common_liveview_aliases()
     end
   end
 
@@ -80,5 +95,15 @@ defmodule FiestaWeb do
   """
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
+  end
+
+  defmacro common_liveview_aliases do
+    quote do
+      alias Surface.Components.Raw
+      import FiestaWeb.ErrorHelpers
+      import FiestaWeb.Helpers.HTML
+      import Phoenix.HTML.Form
+      alias FiestaWeb.Router.Helpers, as: Routes
+    end
   end
 end
