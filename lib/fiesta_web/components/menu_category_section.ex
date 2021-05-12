@@ -11,15 +11,18 @@ defmodule FiestaWeb.Component.MenuCategorySection do
   @doc "Menu struct"
   prop menu, :struct, required: true
 
+  @doc "Selected menu category id"
+  prop selected_menu_category_id, :integer, required: true
+
   @doc "Menu category changeset"
   data changeset, :struct
 
   def render(assigns) do
     ~H"""
     <div>
-      <ul class="border-box divide-y divide-gray">
+      <ul class="border-box divide-y divide-gray-300">
         <li :for={{ menu_category <- @menu.categories }}>
-          <MenuCategoryComponent id={{ menu_category.id }} menu_category={{ menu_category }} />
+          <MenuCategoryComponent id={{ menu_category.id }} menu_category={{ menu_category }} selected={{ menu_category.id == @selected_menu_category_id }} />
         </li>
         <li class="p-2">
           <a href="#" :on-click={{ "open_modal", target: "#add-menu-#{@menu.id}-category" }} class="self-center uppercase text-secondary font-semibold">

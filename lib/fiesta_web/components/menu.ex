@@ -6,23 +6,24 @@ defmodule FiestaWeb.Component.Menu do
   alias Fiesta.Products.Menu
   alias FiestaWeb.Component.Dropdown
   alias FiestaWeb.Component.MenuCategorySection
-  alias FiestaWeb.Component.MenuItemForm
-  alias FiestaWeb.Component.MenuItemSection
   alias FiestaWeb.Component.MenuSection
   alias FiestaWeb.Component.Modal
 
   @doc "Menu struct"
   prop menu, :struct, required: true
 
+  @doc "Collapse menu categories"
+  prop collapse, :boolean, required: true
+
+  @doc "Selected menu category id"
+  prop selected_menu_category_id, :integer, required: true
+
   @doc "Menu changeset"
   data changeset, :struct
 
-  @doc "Collapse menu categories"
-  data collapse, :boolean, default: false
-
   def render(assigns) do
     ~H"""
-    <div class="flex flex-col relative menu-section-item" id={{ "menu-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }}>
+    <div class="flex flex-col relative" id={{ "menu-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }}>
       <a href="#" class="p-2 flex" :on-click="toggle_categories">
         <div class="flex-grow-0" :show={{ !@collapse }}>
           <i data-feather="chevron-right"></i>
@@ -59,7 +60,7 @@ defmodule FiestaWeb.Component.Menu do
       </div>
 
       <div :show={{ @collapse }}>
-        <MenuCategorySection id={{ @menu.id }} menu={{ @menu }} />
+        <MenuCategorySection id={{ @menu.id }} menu={{ @menu }} selected_menu_category_id={{ @selected_menu_category_id }} />
       </div>
 
       <Modal id="edit-menu-{{ @id }}">
@@ -106,23 +107,14 @@ defmodule FiestaWeb.Component.Menu do
     {:noreply, socket}
   end
 
-  def handle_event("hide_categories", %{"except_menu" => menu_component_id}, socket) do
-    socket =
-      if menu_component_id == socket.assigns.id,
-        do: socket,
-        else: assign(socket, collapse: false)
+  def handle_event("toggle_categories", _, %{assigns: %{collapse: true}} = socket) do
+    send(self(), {:category_toggled, nil})
 
     {:noreply, socket}
   end
 
-  def handle_event("toggle_categories", _, socket) do
-    socket =
-      socket
-      |> update(:collapse, &(!&1))
-      |> push_event("hide_categories", %{except_menu: socket.assigns.id})
-
-    send_update(MenuItemForm, id: "menu-item-form", menu_item: nil)
-    send_update(MenuItemSection, id: "menu-item-section", menu_category: nil)
+  def handle_event("toggle_categories", _, %{assigns: %{collapse: false}} = socket) do
+    send(self(), {:category_toggled, socket.assigns.id})
 
     {:noreply, socket}
   end

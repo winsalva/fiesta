@@ -7,7 +7,7 @@ defmodule FiestaWeb.Component.MenuItemForm do
   alias FiestaWeb.Component.MenuItemSection
 
   @doc "Menu item struct"
-  prop menu_item, :struct, default: nil
+  prop menu_item, :struct, required: true
 
   @doc "Menu item changeset"
   data changeset, :struct
@@ -18,7 +18,7 @@ defmodule FiestaWeb.Component.MenuItemForm do
       <div :if={{ @menu_item }}>
         {{ f = form_for @changeset, "#",
           id: @id,
-          class: "border border-gray border-box grid p-7 gap-3 text-xs grid-cols-3",
+          class: "border border-gray-300 border-box grid p-7 gap-3 text-xs grid-cols-3",
           phx_submit: "upsert_menu_item",
           phx_target: @myself,
           phx_hook: "FiestaWeb.Component.MenuItemForm#MaskPrice"
@@ -70,8 +70,9 @@ defmodule FiestaWeb.Component.MenuItemForm do
   def handle_event("upsert_menu_item", %{"menu_item" => params}, socket) do
     case Products.upsert_menu_item(params) do
       {:ok, _menu_item} ->
-        send_update(MenuItemSection, id: "menu-item-section")
-        {:noreply, assign(socket, menu_item: nil)}
+        MenuItemSection.refresh()
+        send(self(), {:item_selected, nil})
+        {:noreply, socket}
 
       {:error, changeset} ->
         {:noreply, assign(socket, changeset: changeset)}

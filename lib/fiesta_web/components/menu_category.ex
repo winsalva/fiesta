@@ -6,18 +6,20 @@ defmodule FiestaWeb.Component.MenuCategory do
   alias Fiesta.Products.MenuCategory
   alias Fiesta.Repo
   alias FiestaWeb.Component.MenuCategorySection
-  alias FiestaWeb.Component.MenuItemSection
   alias FiestaWeb.Component.Modal
 
   @doc "Menu category changeset"
   data changeset, :struct
+
+  @doc "Marks the category as selected"
+  prop selected, :boolean, required: true
 
   @doc "Menu category struct"
   prop menu_category, :struct, required: true
 
   def render(assigns) do
     ~H"""
-    <div class="p-2 flex" id={{ "menu-category-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_items">
+    <div class={{ "p-2 flex", "border-l-4 border-primary": @selected }} id={{ "menu-category-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_items">
       <div class="flex-grow truncate">
         {{ @menu_category.name }}
       </div>
@@ -92,10 +94,7 @@ defmodule FiestaWeb.Component.MenuCategory do
   end
 
   def handle_event("show_items", _, socket) do
-    send_update(MenuItemSection,
-      id: "menu-item-section",
-      menu_category: socket.assigns.menu_category
-    )
+    send(self(), {:category_selected, socket.assigns.id})
 
     {:noreply, socket}
   end

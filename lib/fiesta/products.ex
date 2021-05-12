@@ -16,6 +16,18 @@ defmodule Fiesta.Products do
     |> Repo.all()
   end
 
+  def list_menu_items(params) do
+    {order_by, params} =
+      params
+      |> Enum.to_list()
+      |> Keyword.pop(:order_by, [])
+
+    MenuItem
+    |> where(^params)
+    |> order_by(^order_by)
+    |> Repo.all()
+  end
+
   def create_menu(params) do
     %Menu{}
     |> Menu.changeset(params)

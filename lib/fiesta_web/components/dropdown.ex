@@ -22,7 +22,7 @@ defmodule FiestaWeb.Component.Dropdown do
         x-transition:leave="transition ease-in duration-75"
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
-        class="origin-top-left absolute z-1 mt-2 w-auto rounded bg-white shadow-md border border-solid border-gray-secondary">
+        class="origin-top-left absolute z-1 mt-2 w-auto rounded bg-white shadow-md border border-solid border-gray-300">
         <slot />
       </div>
     </div>

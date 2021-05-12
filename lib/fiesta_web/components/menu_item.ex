@@ -4,15 +4,17 @@ defmodule FiestaWeb.Component.MenuItem do
 
   alias Fiesta.Products
   alias FiestaWeb.Component.MenuItemSection
-  alias FiestaWeb.Component.MenuItemForm
   alias FiestaWeb.Component.Modal
+
+  @doc "Marks the items as selected"
+  prop selected, :boolean, required: true
 
   @doc "Menu item struct"
   prop menu_item, :struct, required: true
 
   def render(assigns) do
     ~H"""
-    <div class="flex p-2" id={{ "menu-item-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_form">
+    <div class={{ "flex p-2", "border-l-4 border-primary": @selected }} id={{ "menu-item-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_form">
       <div class="flex-grow truncate">
         {{ @menu_item.name }}
       </div>
@@ -25,14 +27,14 @@ defmodule FiestaWeb.Component.MenuItem do
 
   def handle_event("delete_menu_item", _params, socket) do
     {:ok, _} = Products.delete_menu_item(socket.assigns.menu_item)
-    send_update(MenuItemSection, id: "menu-item-section")
+    MenuItemSection.refresh()
+    send(self(), {:item_selected, nil})
 
     {:noreply, socket}
   end
 
   def handle_event("show_form", _, socket) do
-    send_update(MenuItemForm, id: "menu-item-form", menu_item: socket.assigns.menu_item)
-
+    send(self(), {:item_selected, socket.assigns.menu_item})
     {:noreply, socket}
   end
 end

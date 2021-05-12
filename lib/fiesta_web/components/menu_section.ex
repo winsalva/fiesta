@@ -10,6 +10,12 @@ defmodule FiestaWeb.Component.MenuSection do
   @doc "Kitchen ID for retrieving menu"
   prop kitchen_id, :integer, required: true
 
+  @doc "Selected menu id"
+  prop selected_menu_id, :integer, required: true
+
+  @doc "Selected menu category id"
+  prop selected_menu_category_id, :integer, required: true
+
   @doc "List of menu"
   data menus, :list, default: []
 
@@ -18,10 +24,10 @@ defmodule FiestaWeb.Component.MenuSection do
 
   def render(assigns) do
     ~H"""
-    <div class="flex-grow flex flex-col" id={{ @id }} :hook={{ "HandleToggleCategories" }}>
-      <ul class="border border-gray border-box divide-y divide-gray" :if={{ @menus != [] }}>
+    <div class="flex-grow flex flex-col" id={{ @id }}>
+      <ul class="border border-gray-300 border-box divide-y divide-gray-300" :if={{ @menus != [] }}>
         <li :for={{ menu <- @menus }}>
-          <MenuComponent id={{ menu.id }} menu={{ menu }} />
+          <MenuComponent id={{ menu.id }} menu={{ menu }} collapse={{ menu.id == @selected_menu_id }} selected_menu_category_id={{ @selected_menu_category_id }} />
         </li>
       </ul>
 
