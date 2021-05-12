@@ -3,10 +3,10 @@ defmodule Fiesta.Products do
   Products context
   """
   import Ecto.Query
-  alias Fiesta.Repo
   alias Fiesta.Products.Menu
   alias Fiesta.Products.MenuCategory
   alias Fiesta.Products.MenuItem
+  alias Fiesta.Repo
 
   def list_menus(params) do
     params = Enum.to_list(params)

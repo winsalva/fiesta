@@ -3,9 +3,9 @@ defmodule FiestaWeb.Component.MenuSection do
   use FiestaWeb, :live_component
 
   alias Fiesta.Products
-  alias FiestaWeb.Component.Modal
-  alias FiestaWeb.Component.Menu, as: MenuComponent
   alias Fiesta.Products.Menu
+  alias FiestaWeb.Component.Menu, as: MenuComponent
+  alias FiestaWeb.Component.Modal
 
   @doc "Kitchen ID for retrieving menu"
   prop kitchen_id, :integer, required: true

@@ -1,8 +1,8 @@
 defmodule FiestaWeb.DashboardLive.Index do
   @moduledoc false
   use Phoenix.LiveView
-  alias FiestaWeb.DashboardView
   alias Fiesta.Users
+  alias FiestaWeb.DashboardView
 
   def render(assigns) do
     DashboardView.render("index.html", assigns)

@@ -3,11 +3,11 @@ defmodule FiestaWeb.MenuLive.Edit do
   use FiestaWeb, :live
   import Surface
 
-  alias FiestaWeb.Component.MenuSection
-  alias FiestaWeb.Component.MenuItemSection
-  alias FiestaWeb.Component.MenuItemForm
-  alias Fiesta.Users
   alias Fiesta.Repo
+  alias Fiesta.Users
+  alias FiestaWeb.Component.MenuItemForm
+  alias FiestaWeb.Component.MenuItemSection
+  alias FiestaWeb.Component.MenuSection
 
   @doc "Selected menu id "
   data selected_menu_id, :integer, default: nil
