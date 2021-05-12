@@ -15,6 +15,8 @@ defmodule Fiesta.ProductFactory do
           name: random_letters(10),
           description: random_letters(50),
           price: %Money{amount: 100, currency: :PHP},
+          tax: Decimal.new(3),
+          visibility: :active,
           category: build(:menu_category)
         }
       end
