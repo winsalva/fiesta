@@ -1,0 +1,6 @@
+env: flex
+runtime: gs://elixir-runtime/elixir.yaml
+runtime_config:
+    release_app: fiesta
+beta_settings:
+    cloud_sql_instances: menu-please:us-central1:fiesta-prod
