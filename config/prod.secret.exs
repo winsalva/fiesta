@@ -5,10 +5,10 @@
 use Mix.Config
 
 config :fiesta, Fiesta.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "fiesta_prod",
-  socket_dir: "/cloudsql/menu-please:us-central1:fiesta-prod",
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
+  database: System.get_env("DB_NAME"),
+  socket_dir: System.get_env("DB_CONNECTION_NAME"),
   pool_size: 15
 
 config :fiesta, FiestaWeb.Endpoint,
@@ -16,7 +16,8 @@ config :fiesta, FiestaWeb.Endpoint,
     port: String.to_integer(System.get_env("PORT") || "4000"),
     transport_options: [socket_opts: [:inet6]]
   ],
-  secret_key_base: "KDGl7gOREcPf8+IGxJ/v1d/Fo0urs07s+lac9/Bany/oWQX0KDtT2eO4SE6WlKGi"
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  live_view: [signing_salt: System.get_env("SIGNING_SALT")]
 
 # ## Using releases (Elixir v1.9+)
 #
