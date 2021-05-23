@@ -2,15 +2,9 @@ name: Build and Deploy to GAE
 
 on:
   push:
-    branches: [master]
-
-env:
-  DB_USERNAME: ${{secrets.DB_USER_NAME}}
-  DB_PASSWORD: ${{secrets.DB_PASSWORD}}
-  DB_NAME: ${{secrets.DB_NAME}}
-  DB_CONNECTION_NAME: ${{secrets.DB_CONNECTION_NAME}}
-  SECRET_KEY_BASE: ${{secrets.SECRET_KEY_BASE}}
-  SIGNING_SALT: ${{secrets.SIGNING_SALT}}
+    branches:
+      - master
+      - fix/deployment-environment
 
 jobs:
   deploy:
@@ -29,3 +23,10 @@ jobs:
           project_id: ${{ secrets.PROJECT_ID }}
           deliverables: "app.yaml"
           working_directory: "./"
+        env:
+          DB_USERNAME: ${{ secrets.DB_USER_NAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_CONNECTION_NAME: ${{ secrets.DB_CONNECTION_NAME }}
+          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+          SIGNING_SALT: ${{ secrets.SIGNING_SALT }}
