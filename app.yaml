@@ -4,3 +4,10 @@ runtime_config:
     release_app: fiesta
 beta_settings:
     cloud_sql_instances: menu-please:us-central1:fiesta-prod
+env_variables:
+    DB_USERNAME: $DB_USER_NAME
+    DB_PASSWORD: $DB_PASSWORD
+    DB_NAME: $DB_NAME
+    DB_CONNECTION_NAME: $DB_CONNECTION_NAME
+    SECRET_KEY_BASE: $SECRET_KEY_BASE
+    SIGNING_SALT: $SIGNING_SALT
