@@ -25,7 +25,7 @@ defmodule Fiesta.MixProject do
   def application do
     [
       mod: {Fiesta.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :mnesia]
     ]
   end
 

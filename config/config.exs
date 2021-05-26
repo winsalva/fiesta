@@ -30,7 +30,8 @@ config :phoenix, :json_library, Jason
 config :fiesta, :pow,
   user: Fiesta.Users.User,
   repo: Fiesta.Repo,
-  users_context: Fiesta.Users
+  users_context: Fiesta.Users,
+  cache_store_backend: Pow.Store.Backend.MnesiaCache
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

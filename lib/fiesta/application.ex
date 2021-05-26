@@ -14,6 +14,7 @@ defmodule Fiesta.Application do
       FiestaWeb.Endpoint,
       # Starts a worker by calling: Fiesta.Worker.start_link(arg)
       # {Fiesta.Worker, arg},
+      Pow.Store.Backend.MnesiaCache,
       {Phoenix.PubSub, [name: Fiesta.PubSub, adapter: Phoenix.PubSub.PG2]}
     ]
 
