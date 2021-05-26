@@ -2,15 +2,8 @@ name: Build and Deploy to GAE
 
 on:
   push:
-    branches: [master]
-
-env:
-  DB_USERNAME: ${{secrets.DB_USER_NAME}}
-  DB_PASSWORD: ${{secrets.DB_PASSWORD}}
-  DB_NAME: ${{secrets.DB_NAME}}
-  DB_CONNECTION_NAME: ${{secrets.DB_CONNECTION_NAME}}
-  SECRET_KEY_BASE: ${{secrets.SECRET_KEY_BASE}}
-  SIGNING_SALT: ${{secrets.SIGNING_SALT}}
+    branches:
+      - master
 
 jobs:
   deploy:
@@ -18,6 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: ikuanyshbekov/app-yaml-env-compiler@v1.0
+        env:
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_CONNECTION_NAME: ${{ secrets.DB_CONNECTION_NAME }}
+          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+          SIGNING_SALT: ${{ secrets.SIGNING_SALT }}
       - uses: google-github-actions/setup-gcloud@master
         with:
           version: '290.0.1'
