@@ -2,7 +2,7 @@ defmodule FiestaWeb.ViewHelpers do
   @moduledoc false
 
   alias Fiesta.Repo
-  alias Fiesta.Users.User
+  alias Fiesta.Accounts.User
 
   def get_kitchen_from_user(%User{} = user) do
     user

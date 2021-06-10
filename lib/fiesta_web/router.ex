@@ -1,19 +1,16 @@
 defmodule FiestaWeb.Router do
   use FiestaWeb, :router
+
+  import FiestaWeb.UserAuth
   use Pow.Phoenix.Router
 
   pipeline :protected do
-    plug Pow.Plug.RequireAuthenticated,
-      error_handler: FiestaWeb.FallbackController
-
-    plug FiestaWeb.Plugs.PutCurrentUserSession
+    plug :require_authenticated_user
+    plug :put_current_user_id_to_session
     plug :put_root_layout, {FiestaWeb.LayoutView, "app.html"}
   end
 
   pipeline :not_authenticated do
-    plug Pow.Plug.RequireNotAuthenticated,
-      error_handler: FiestaWeb.FallbackController
-
     plug(:put_layout, {FiestaWeb.LayoutView, "landing_page.html"})
   end
 
@@ -23,6 +20,7 @@ defmodule FiestaWeb.Router do
     plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_user
   end
 
   pipeline :api do
@@ -38,22 +36,16 @@ defmodule FiestaWeb.Router do
   scope "/", FiestaWeb do
     pipe_through [:browser, :not_authenticated]
 
-    post "/signup", Users.RegistrationController, :create, as: :signup
-    resources "/login", Users.SessionController, as: :login, only: [:new, :create]
+    post "/signup", UserRegistrationController, :create, as: :signup
+    resources "/login", UserSessionController, as: :login, only: [:new, :create]
   end
 
   scope "/", FiestaWeb do
     pipe_through [:browser, :protected]
 
     live "/dashboard", DashboardLive.Index, :index, as: :dashboard
-    delete "/logout", Users.SessionController, :delete, as: :logout
+    delete "/logout", UserSessionController, :delete, as: :logout
 
-    live "/kitchen", KitchenLive.Index
     live "/menu-builder", MenuLive.Edit, :edit, as: :menu
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", FiestaWeb do
-  #   pipe_through :api
-  # end
 end

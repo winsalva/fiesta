@@ -9,7 +9,7 @@ defmodule Fiesta.Kitchens.Kitchen do
     field(:description, :string)
 
     has_many(:menus, Fiesta.Products.Menu)
-    belongs_to(:owner, Fiesta.Users.User, foreign_key: :owner_id)
+    belongs_to(:owner, Fiesta.Accounts.User, foreign_key: :owner_id)
 
     timestamps()
   end

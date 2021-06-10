@@ -10,7 +10,7 @@
     <div class="w-full lg:w-2/5 md:p-10">
       <div class="grid grid-flow-row border-t-8 border-gray-900 bg-white h-full p-8 gap-4">
         <div class="text-xl">Get started by registering below</div>
-        <%= render RegistrationView, "new.html", conn: @conn, changeset: @changeset %>
+        <%= render UserRegistrationView, "new.html", conn: @conn, changeset: @changeset %>
       </div>
     </div>
   </div>
