@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - fix/session-not-persisting
 
 jobs:
   deploy:
