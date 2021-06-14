@@ -16,10 +16,7 @@ defmodule FiestaWeb.ConnCase do
   """
 
   use ExUnit.CaseTemplate
-  import Fiesta.Factory
-  import Phoenix.ConnTest
   alias Ecto.Adapters.SQL.Sandbox
-  alias Pow.Plug, as: PowPlug
 
   using do
     quote do
@@ -27,6 +24,7 @@ defmodule FiestaWeb.ConnCase do
       import Fiesta.Factory
       import FiestaWeb.ConnCase
       import Phoenix.ConnTest
+      import Plug.Conn
       alias FiestaWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing

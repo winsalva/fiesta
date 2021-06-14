@@ -3,8 +3,8 @@ defmodule FiestaWeb.UserRegistrationController do
 
   alias Fiesta.Accounts
   alias Fiesta.Accounts.User
-  alias FiestaWeb.UserAuth
   alias FiestaWeb.PageView
+  alias FiestaWeb.UserAuth
 
   def new(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})

@@ -3,9 +3,11 @@ defmodule Fiesta.Repo.Migrations.DropOldVersionOfUsers do
 
   def up do
     drop constraint("kitchens", "kitchens_owner_id_fkey")
+
     alter table("kitchens") do
       remove :owner_id, :bigint
     end
+
     execute("delete from kitchens")
     execute("delete from menu_items")
     execute("delete from menu_categories")

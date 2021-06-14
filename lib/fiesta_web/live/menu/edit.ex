@@ -3,8 +3,8 @@ defmodule FiestaWeb.MenuLive.Edit do
   use FiestaWeb, :live
   import Surface
 
-  alias Fiesta.Repo
   alias Fiesta.Accounts
+  alias Fiesta.Repo
   alias FiestaWeb.Component.MenuItemForm
   alias FiestaWeb.Component.MenuItemSection
   alias FiestaWeb.Component.MenuSection

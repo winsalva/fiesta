@@ -4,8 +4,8 @@ defmodule Fiesta.Accounts do
   """
 
   import Ecto.Query, warn: false
+  alias Fiesta.Accounts.{User, UserNotifier, UserToken}
   alias Fiesta.Repo
-  alias Fiesta.Accounts.{User, UserToken, UserNotifier}
 
   ## Database getters
 
