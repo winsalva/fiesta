@@ -38,6 +38,7 @@ defmodule Fiesta.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 2.0"},
       {:phoenix, "~> 1.5.3"},
       {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_ecto, "~> 4.0"},
@@ -59,7 +60,8 @@ defmodule Fiesta.MixProject do
       {:credo, "~> 1.5.0-rc.2", only: [:dev, :test], runtime: false},
       {:surface, "~> 0.3.0"},
       {:ecto, "~> 3.5"},
-      {:distillery, "~> 2.1"}
+      {:distillery, "~> 2.1"},
+      {:phx_gen_auth, "~> 0.7", only: [:dev], runtime: false}
     ]
   end
 

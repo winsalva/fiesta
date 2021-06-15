@@ -3,8 +3,8 @@ defmodule FiestaWeb.MenuLive.Edit do
   use FiestaWeb, :live
   import Surface
 
+  alias Fiesta.Accounts
   alias Fiesta.Repo
-  alias Fiesta.Users
   alias FiestaWeb.Component.MenuItemForm
   alias FiestaWeb.Component.MenuItemSection
   alias FiestaWeb.Component.MenuSection
@@ -46,8 +46,8 @@ defmodule FiestaWeb.MenuLive.Edit do
 
   def mount(_, %{"user_id" => user_id}, socket) do
     user =
-      [id: user_id]
-      |> Users.get_by()
+      user_id
+      |> Accounts.get_user()
       |> Repo.preload(:kitchen)
 
     {:ok, assign(socket, current_user: user)}

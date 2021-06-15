@@ -46,7 +46,7 @@ window.flashMessageState = () => ({
       this.flashMessages.unshift({
         id: id,
         type: type,
-        message: message,
+        message: this.escapeHtml(message),
         title: setTitle,
       });
       this.showFlashMessages = true;
@@ -56,5 +56,13 @@ window.flashMessageState = () => ({
         this.flashMessages.pop();
       }
     }
+  },
+  escapeHtml(unsafe) {
+    return unsafe
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   },
 });

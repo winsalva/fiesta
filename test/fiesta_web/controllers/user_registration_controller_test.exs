@@ -1,6 +1,5 @@
-defmodule FiestaWeb.Users.RegistrationControllerTest do
-  @moduledoc false
-  use FiestaWeb.ConnCase
+defmodule FiestaWeb.UserRegistrationControllerTest do
+  use FiestaWeb.ConnCase, async: true
 
   describe "create/2" do
     setup do

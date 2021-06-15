@@ -16,10 +16,7 @@ defmodule FiestaWeb.ConnCase do
   """
 
   use ExUnit.CaseTemplate
-  import Fiesta.Factory
-  import Phoenix.ConnTest
   alias Ecto.Adapters.SQL.Sandbox
-  alias Pow.Plug, as: PowPlug
 
   using do
     quote do
@@ -27,6 +24,7 @@ defmodule FiestaWeb.ConnCase do
       import Fiesta.Factory
       import FiestaWeb.ConnCase
       import Phoenix.ConnTest
+      import Plug.Conn
       alias FiestaWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
@@ -44,14 +42,29 @@ defmodule FiestaWeb.ConnCase do
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 
-  def login(conn), do: do_login(conn, insert(:user))
+  @doc """
+  Setup helper that registers and logs in users.
 
-  def login(conn, user), do: do_login(conn, user)
+      setup :register_and_log_in_user
 
-  defp do_login(conn, user) do
+  It stores an updated connection and a registered user in the
+  test context.
+  """
+  def register_and_log_in_user(%{conn: conn}) do
+    user = Fiesta.AccountsFixtures.user_fixture()
+    %{conn: log_in_user(conn, user), user: user}
+  end
+
+  @doc """
+  Logs the given `user` into the `conn`.
+
+  It returns an updated `conn`.
+  """
+  def log_in_user(conn, user) do
+    token = Fiesta.Accounts.generate_user_session_token(user)
+
     conn
-    |> bypass_through(FiestaWeb.Router, [:browser, :not_authenticated])
-    |> dispatch(FiestaWeb.Endpoint, :get, "/")
-    |> PowPlug.create(user)
+    |> Phoenix.ConnTest.init_test_session(%{})
+    |> Plug.Conn.put_session(:user_token, token)
   end
 end
