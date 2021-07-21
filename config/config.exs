@@ -26,6 +26,16 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Upload library
+config :waffle,
+  storage: Waffle.Storage.Google.CloudStorage,
+  bucket: "menu-please-prod-uploads",
+  storage_dir: "uploads",
+  signed: true
+
+# Google Authentication
+config :goth, json: File.read!("menu-please-258d470fb5d6.json")
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

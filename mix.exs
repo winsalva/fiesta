@@ -61,7 +61,12 @@ defmodule Fiesta.MixProject do
       {:surface, "~> 0.3.0"},
       {:ecto, "~> 3.5"},
       {:distillery, "~> 2.1"},
-      {:phx_gen_auth, "~> 0.7", only: [:dev], runtime: false}
+      {:phx_gen_auth, "~> 0.7", only: [:dev], runtime: false},
+      {:waffle, "~> 0.0.3"},
+      {:waffle_gcs, "~> 0.1.1"},
+      {:goth, "~> 1.1"},
+      {:hackney, "~> 1.17"},
+      {:waffle_ecto, "0.0.5"}
     ]
   end
 
