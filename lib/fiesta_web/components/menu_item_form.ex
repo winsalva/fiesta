@@ -17,52 +17,52 @@ defmodule FiestaWeb.Component.MenuItemForm do
   data uploads, :map
 
   def render(assigns) do
-    ~H"""
-    <div class="flex-grow flex flex-col space-y-2" :show={{ not is_nil(@menu_item) }}>
-      <div :if={{ @menu_item }}>
-        {{ f = form_for @changeset, "#",
+    ~F"""
+    <div class="flex-grow flex flex-col space-y-2" :show={not is_nil(@menu_item)}>
+      <div :if={@menu_item}>
+        {f = form_for @changeset, "#",
           id: @id,
           class: "border border-gray-300 border-box grid p-7 gap-3 text-xs grid-cols-3",
           phx_submit: "upsert_menu_item",
           phx_target: @myself,
           phx_hook: "FiestaWeb.Component.MenuItemForm#MaskPrice",
           phx_change: "validate_menu_item"
-        }}
+        }
         <div class="flex flex-col space-y-2 col-span-3">
-          {{ label f, :name }}
-          {{ text_input f, :name, class: "p-2" }}
-          {{ error_tag f, :name }}
+          {label f, :name}
+          {text_input f, :name, class: "p-2"}
+          {error_tag f, :name}
         </div>
         <div class="flex flex-col space-y-2 col-span-3">
-          {{ label f, :description }}
-          {{ textarea f, :description, class: "p-2 resize-none" }}
-          {{ error_tag f, :description }}
+          {label f, :description}
+          {textarea f, :description, class: "p-2 resize-none"}
+          {error_tag f, :description}
         </div>
-        {{ hidden_input f, :id }}
-        {{ hidden_input f, :menu_category_id }}
+        {hidden_input f, :id}
+        {hidden_input f, :menu_category_id}
         <div class="flex flex-col space-y-2 col-span-1">
-          {{ label f, :price }}
-          {{ price_input f, :price, class: "p-2", name: "menu_item[price][amount]" }}
-          {{ error_tag f, :price }}
-          {{ hidden_input f, :price, name: "menu_item[price][currency]", value: "PHP" }}
-        </div>
-        <div class="flex flex-col space-y-2 col-span-1">
-          {{ label f, :tax, "Tax %" }}
-          {{ text_input f, :tax, class: "p-2 price-input" }}
-          {{ error_tag f, :tax }}
+          {label f, :price}
+          {price_input f, :price, class: "p-2", name: "menu_item[price][amount]"}
+          {error_tag f, :price}
+          {hidden_input f, :price, name: "menu_item[price][currency]", value: "PHP"}
         </div>
         <div class="flex flex-col space-y-2 col-span-1">
-          {{ label f, :visibility, "Item visibility" }}
-          {{ select f, :visibility, [:active, :inactive], class: "p-2" }}
-          {{ error_tag f, :visibility }}
+          {label f, :tax, "Tax %"}
+          {text_input f, :tax, class: "p-2 price-input"}
+          {error_tag f, :tax}
         </div>
-        {{ live_file_input @uploads.menu_item }}
+        <div class="flex flex-col space-y-2 col-span-1">
+          {label f, :visibility, "Item visibility"}
+          {select f, :visibility, [:active, :inactive], class: "p-2"}
+          {error_tag f, :visibility}
+        </div>
+        {live_file_input @uploads.menu_item}
 
-        <progress :for={{ entry <- @uploads.menu_item.entries }} value={{ entry.progress }} max="100"> {{ entry.progress }}% </progress>
+        <progress :for={entry <- @uploads.menu_item.entries} value={entry.progress} max="100"> {entry.progress}% </progress>
         <#Raw></form></#Raw>
       </div>
 
-      <button type="submit" class="btn btn-secondary" form="{{ @id }}" :if={{ @menu_item }}> Submit changes </button>
+      <button type="submit" class="btn btn-secondary" form={"#{@id}"} :if={@menu_item}> Submit changes </button>
     </div>
     """
   end

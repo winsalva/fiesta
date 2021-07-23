@@ -23,33 +23,33 @@ defmodule FiestaWeb.Component.MenuSection do
   data changeset, :struct
 
   def render(assigns) do
-    ~H"""
-    <div class="flex-grow flex flex-col" id={{ @id }}>
-      <ul class="border border-gray-300 border-box divide-y divide-gray-300" :if={{ @menus != [] }}>
-        <li :for={{ menu <- @menus }}>
-          <MenuComponent id={{ menu.id }} menu={{ menu }} collapse={{ menu.id == @selected_menu_id }} selected_menu_category_id={{ @selected_menu_category_id }} />
+    ~F"""
+    <div class="flex-grow flex flex-col" id={@id}>
+      <ul class="border border-gray-300 border-box divide-y divide-gray-300" :if={@menus != []}>
+        <li :for={menu <- @menus}>
+          <MenuComponent id={menu.id} menu={menu} collapse={menu.id == @selected_menu_id} selected_menu_category_id={@selected_menu_category_id} />
         </li>
       </ul>
 
-      <a href="#" :on-click={{ "open_modal", target: "#add-menu" }}
+      <a href="#" :on-click={"open_modal", target: "#add-menu"}
         class="mt-auto self-center uppercase text-secondary font-semibold p-2">
         Add menu
       </a>
 
       <Modal id="add-menu">
-        <template slot="header">Add menu</template>
+        <#template slot="header">Add menu</#template>
 
-        {{ f = form_for @changeset, "#", id: "new-menu", class: "flex flex-col", as: :menu, phx_submit: "create_menu", phx_target: @myself }}
-        {{ text_input f, :name, class: "p-2", placeholder: "Your menu name" }}
-        {{ error_tag f, :name }}
+        {f = form_for @changeset, "#", id: "new-menu", class: "flex flex-col", as: :menu, phx_submit: "create_menu", phx_target: @myself}
+        {text_input f, :name, class: "p-2", placeholder: "Your menu name"}
+        {error_tag f, :name}
         <#Raw></form></#Raw>
 
-        <template slot="footer">
+        <#template slot="footer">
           <div class="flex justify-end space-x-2">
-            <button type="button" :on-click={{ "close_modal", target: "#add-menu" }}>Cancel</button>
+            <button type="button" :on-click={"close_modal", target: "#add-menu"}>Cancel</button>
             <button type="submit" class="btn btn-secondary" form="new-menu">Submit</button>
           </div>
-        </template>
+        </#template>
       </Modal>
     </div>
     """

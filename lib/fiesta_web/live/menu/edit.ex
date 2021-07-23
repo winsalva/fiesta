@@ -19,24 +19,24 @@ defmodule FiestaWeb.MenuLive.Edit do
   data selected_menu_item, :struct, default: nil
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <div class="p-6 flex flex-col">
       <div class="bg-white rounded-md p-6">
         <div>Craft your menu</div>
         <div class="flex flex-col lg:flex-row mt-4 w-full">
           <!-- Add menu -->
           <div class="flex flex-col w-full lg:w-1/4">
-            <MenuSection id="menu-section" kitchen_id={{ @current_user.kitchen.id }} selected_menu_id={{ @selected_menu_id }} selected_menu_category_id={{ @selected_menu_category_id }} />
+            <MenuSection id="menu-section" kitchen_id={@current_user.kitchen.id} selected_menu_id={@selected_menu_id} selected_menu_category_id={@selected_menu_category_id} />
           </div>
 
           <!-- Add item -->
           <div class="flex flex-col w-full lg:w-1/4">
-            <MenuItemSection id="menu-item-section" selected_menu_category_id={{ @selected_menu_category_id }} selected_menu_item_id={{ @selected_menu_item && @selected_menu_item.id }} />
+            <MenuItemSection id="menu-item-section" selected_menu_category_id={@selected_menu_category_id} selected_menu_item_id={@selected_menu_item && @selected_menu_item.id} />
           </div>
 
           <!-- Item description -->
           <div class="flex flex-col w-full lg:w-1/2">
-            <MenuItemForm id="menu-item-form" menu_item={{ @selected_menu_item }} />
+            <MenuItemForm id="menu-item-form" menu_item={@selected_menu_item} />
           </div>
         </div>
       </div>

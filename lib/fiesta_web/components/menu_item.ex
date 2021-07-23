@@ -13,10 +13,10 @@ defmodule FiestaWeb.Component.MenuItem do
   prop menu_item, :struct, required: true
 
   def render(assigns) do
-    ~H"""
-    <div class={{ "flex relative", "border-l-4 border-primary": @selected }} id={{ "menu-item-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }} :on-click="show_form">
+    ~F"""
+    <div class={"flex relative", "border-l-4 border-primary": @selected} id={"menu-item-#{@id}"} :hook={"FeatherIcons", from: Modal} :on-click="show_form">
       <div class="cursor-pointer p-2 flex-grow truncate">
-        {{ @menu_item.name }}
+        {@menu_item.name}
       </div>
       <a href="#" class="bg-white absolute right-0 top-2" :on-click="delete_menu_item">
         <i data-feather="trash-2"></i>
