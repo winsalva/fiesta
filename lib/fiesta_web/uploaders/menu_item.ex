@@ -41,6 +41,5 @@ defmodule FiestaWeb.Uploaders.MenuItem do
 
   def gcs_object_headers(_version, {file, _scope}) do
     [content_type: MIME.from_path(file.file_name), "cache-control": "no-store"]
-    |> IO.inspect(label: "GCS_HEADER")
   end
 end

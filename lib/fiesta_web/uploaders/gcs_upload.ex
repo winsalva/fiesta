@@ -50,8 +50,6 @@ defmodule FiestaWeb.Uploaders.GCSUpload do
       ]
     }
 
-    IO.inspect(policy, label: "POLICY")
-
     base64_encoded_policy =
       policy
       |> Jason.encode!()
