@@ -43,4 +43,4 @@ npm-debug.log
 # Auto generated hooks by surface
 /assets/js/_hooks
 
-/*.json
+/config/dev.secret.exs

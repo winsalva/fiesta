@@ -132,8 +132,8 @@ defmodule FiestaWeb.Component.MenuItemForm do
 
     config = %{
       region: "ap-southeast-1",
-      access_key_id: "AKIA2EFYLBIDTFBOLIV6",
-      secret_access_key: "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"
+      access_key_id: Application.fetch_env!(:fiesta, :aws_access_key_id),
+      secret_access_key: Application.fetch_env!(:fiesta, :aws_secret_access_key)
     }
 
     key = S3URL.key(socket.assigns.menu_item, entry.client_name)
