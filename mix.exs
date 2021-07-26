@@ -58,10 +58,11 @@ defmodule Fiesta.MixProject do
       {:money, "~> 1.7"},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.5.0-rc.2", only: [:dev, :test], runtime: false},
-      {:surface, "~> 0.3.0"},
+      {:surface, "~> 0.5.0"},
       {:ecto, "~> 3.5"},
       {:distillery, "~> 2.1"},
-      {:phx_gen_auth, "~> 0.7", only: [:dev], runtime: false}
+      {:phx_gen_auth, "~> 0.7", only: [:dev], runtime: false},
+      {:hackney, "~> 1.17"}
     ]
   end
 

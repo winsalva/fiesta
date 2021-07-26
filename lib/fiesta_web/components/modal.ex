@@ -15,23 +15,23 @@ defmodule FiestaWeb.Component.Modal do
   slot footer
 
   def render(%{open?: true} = assigns) do
-    ~H"""
-    <div id={{ @id }} class="modal-container fixed bottom-0 inset-x-0 px-4 pb-4 inset-0 flex overflow-auto bg-black bg-opacity-50 z-10">
+    ~F"""
+    <div id={@id} class="modal-container fixed bottom-0 inset-x-0 px-4 pb-4 inset-0 flex overflow-auto bg-black bg-opacity-50 z-10">
       <div class="bg-white m-auto rounded shadow-md z-50 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
         <header class="modal-header py-4 px-6 border-b border-gray-200 flex justify-between">
-          <slot name="header" />
+          <#slot name="header" />
 
-          <button type="button" class="flex-grow-0" :on-click="close_modal" id={{ @id <> "-close-modal" }} phx-update="ignore" :hook="FeatherIcons">
+          <button type="button" class="flex-grow-0" :on-click="close_modal" id={@id <> "-close-modal"} phx-update="ignore" :hook="FeatherIcons">
             <i data-feather="x"></i>
           </button>
         </header>
 
         <div class="modal-body p-6">
-          <slot />
+          <#slot />
         </div>
 
         <footer class="modal-footer border-t border-gray-200 p-6">
-          <slot name="footer" />
+          <#slot name="footer" />
         </footer>
       </div>
     </div>
@@ -39,8 +39,8 @@ defmodule FiestaWeb.Component.Modal do
   end
 
   def render(assigns) do
-    ~H"""
-    <div id={{ @id }}></div>
+    ~F"""
+    <div id={@id}></div>
     """
   end
 

@@ -12,6 +12,7 @@ defmodule Fiesta.Products.MenuItem do
     field(:price, MultiCurrencyPrice)
     field(:tax, :decimal)
     field(:visibility, Ecto.Enum, values: [:active, :inactive])
+    field(:image_url, :string)
 
     belongs_to(:category, Fiesta.Products.MenuCategory, foreign_key: :menu_category_id)
 
@@ -19,7 +20,7 @@ defmodule Fiesta.Products.MenuItem do
   end
 
   @required [:name, :menu_category_id, :tax, :visibility]
-  @attrs @required ++ [:description, :price]
+  @attrs @required ++ [:description, :price, :image_url]
 
   def changeset(model_or_changeset, attrs \\ %{}) do
     model_or_changeset

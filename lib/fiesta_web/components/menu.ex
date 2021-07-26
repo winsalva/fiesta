@@ -22,36 +22,36 @@ defmodule FiestaWeb.Component.Menu do
   data changeset, :struct
 
   def render(assigns) do
-    ~H"""
-    <div class="flex flex-col relative" id={{ "menu-#{@id}" }} :hook={{ "FeatherIcons", from: Modal }}>
-      <div class={{ "cursor-pointer p-2 flex", "bg-gray-200": @collapse }} :on-click="toggle_categories">
-        <div class="flex-grow-0" :show={{ !@collapse }}>
+    ~F"""
+    <div class="flex flex-col relative" id={"menu-#{@id}"} :hook={"FeatherIcons", from: Modal}>
+      <div class={"cursor-pointer p-2 flex", "bg-gray-200": @collapse} :on-click="toggle_categories">
+        <div class="flex-grow-0" :show={!@collapse}>
           <i data-feather="chevron-right"></i>
         </div>
 
-        <div class="flex-grow-0" :show={{ @collapse }}>
+        <div class="flex-grow-0" :show={@collapse}>
           <i data-feather="chevron-down"></i>
         </div>
 
         <div class="flex-grow truncate">
-          {{ @menu.name }}
+          {@menu.name}
         </div>
       </div>
 
       <div class="absolute right-0 top-2">
         <Dropdown>
-          <template slot="clickable">
+          <#template slot="clickable">
             <i data-feather="more-vertical"></i>
-          </template>
+          </#template>
 
           <ul>
             <li class="p-2 flex space-x-2 cursor-pointer hover:bg-gray-100"
-              :on-click={{ "open_modal", target: "#edit-menu-#{@id}" }} x-on:click="isOpen = false">
+              :on-click={"open_modal", target: "#edit-menu-#{@id}"} x-on:click="isOpen = false">
               <i data-feather="edit"></i>
               <span> Edit </span>
             </li>
             <li class="p-2 flex space-x-2 cursor-pointer hover:bg-gray-100"
-              :on-click={{ "delete_menu", target: @myself }}>
+              :on-click={"delete_menu", target: @myself}>
               <i data-feather="trash-2"></i>
               <span> Delete </span>
             </li>
@@ -59,24 +59,24 @@ defmodule FiestaWeb.Component.Menu do
         </Dropdown>
       </div>
 
-      <div :show={{ @collapse }}>
-        <MenuCategorySection id={{ @menu.id }} menu={{ @menu }} selected_menu_category_id={{ @selected_menu_category_id }} />
+      <div :show={@collapse}>
+        <MenuCategorySection id={@menu.id} menu={@menu} selected_menu_category_id={@selected_menu_category_id} />
       </div>
 
-      <Modal id="edit-menu-{{ @id }}">
-        <template slot="header">Edit menu</template>
+      <Modal id={"edit-menu-#{@id}"}>
+        <#template slot="header">Edit menu</#template>
 
-        {{ f = form_for @changeset, "#", id: "edit-menu-#{@id}-form", class: "flex flex-col", as: :menu, phx_submit: "update_menu", phx_target: @myself }}
-        {{ text_input f, :name, class: "p-2", placeholder: "Your menu name" }}
-        {{ error_tag f, :name }}
+        {f = form_for @changeset, "#", id: "edit-menu-#{@id}-form", class: "flex flex-col", as: :menu, phx_submit: "update_menu", phx_target: @myself}
+        {text_input f, :name, class: "p-2", placeholder: "Your menu name"}
+        {error_tag f, :name}
         <#Raw></form></#Raw>
 
-        <template slot="footer">
+        <#template slot="footer">
           <div class="flex justify-end space-x-2">
-            <button type="button" :on-click={{ "close_modal", target: "#edit-menu-#{@id}" }}>Cancel</button>
-            <button type="submit" class="btn btn-secondary" form="edit-menu-{{ @id }}-form">Update</button>
+            <button type="button" :on-click={"close_modal", target: "#edit-menu-#{@id}"}>Cancel</button>
+            <button type="submit" class="btn btn-secondary" form={"edit-menu-#{@id}-form"}>Update</button>
           </div>
-        </template>
+        </#template>
       </Modal>
     </div>
     """

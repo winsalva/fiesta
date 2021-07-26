@@ -7,6 +7,7 @@ defmodule Fiesta.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
+
     children = [
       # Start the Ecto repository
       Fiesta.Repo,

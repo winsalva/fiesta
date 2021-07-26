@@ -9,10 +9,10 @@ defmodule FiestaWeb.Component.Dropdown do
   slot default
 
   def render(assigns) do
-    ~H"""
+    ~F"""
     <div x-data="{ isOpen: false }">
       <div class="cursor-pointer" x-on:click="isOpen = true">
-        <slot name="clickable" />
+        <#slot name="clickable" />
       </div>
 
       <div x-cloak x-show="isOpen" x-on:click.away="isOpen = false"
@@ -23,7 +23,7 @@ defmodule FiestaWeb.Component.Dropdown do
         x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95"
         class="origin-top-left absolute z-1 mt-2 w-auto rounded bg-white shadow-md border border-solid border-gray-300">
-        <slot />
+        <#slot />
       </div>
     </div>
     """
