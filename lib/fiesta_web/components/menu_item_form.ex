@@ -2,6 +2,8 @@ defmodule FiestaWeb.Component.MenuItemForm do
   @moduledoc false
   use FiestaWeb, :live_component
 
+  import FiestaWeb.Helpers.Live
+
   alias Fiesta.Products
   alias Fiesta.Products.MenuItem
   alias FiestaWeb.Component.MenuItemSection
@@ -67,13 +69,14 @@ defmodule FiestaWeb.Component.MenuItemForm do
           {/for}
         </div>
         <div class="col-span-3 md:col-span-2 flex place-content-center">
-          {#if url = @menu_item.image_url}
-            <img src={url} class="max-w-full h-auto">
-          {#else}
-            {#for entry <- @uploads.menu_item.entries}
-            {live_img_preview entry, class: "max-w-full h-auto"}
-            {/for}
-          {/if}
+          {#case @uploads.menu_item.entries}
+            {#match []}
+              <img :if={@menu_item.image_url} src={@menu_item.image_url} class="max-w-full h-auto">
+            {#match entries}
+              {#for entry <- entries}
+              {live_img_preview entry, class: "max-w-full h-auto"}
+              {/for}
+          {/case}
         </div>
         <#Raw></form></#Raw>
       </div>
@@ -95,7 +98,11 @@ defmodule FiestaWeb.Component.MenuItemForm do
   end
 
   def update(assigns, socket) do
-    socket = assign(socket, assigns)
+    socket =
+      socket
+      |> assign(assigns)
+      |> cancel_all_uploads(:menu_item)
+
     menu_item = socket.assigns.menu_item
     changeset = menu_item && MenuItem.changeset(menu_item)
 
@@ -110,7 +117,9 @@ defmodule FiestaWeb.Component.MenuItemForm do
       {:ok, _menu_item} ->
         MenuItemSection.refresh()
         send(self(), {:item_selected, nil})
-        {:noreply, socket}
+        consume_uploaded_entries(socket, :menu_item, fn _, _ -> :ok end)
+
+        {:noreply, assign(socket, uploaded_file: nil)}
 
       {:error, changeset} ->
         {:noreply, assign(socket, changeset: changeset)}
